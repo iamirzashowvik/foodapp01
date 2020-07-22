@@ -15,23 +15,44 @@ class Plannedmeal extends StatelessWidget {
       width: 1080, // Optional
       allowFontScaling: true,
       child: Scaffold(
-        body: Container(
-          child: Column(
-            children: <Widget>[
-              Container(
-                child: TextResponsive(
-                  'My planned meal',
-                  style: TextStyle(
-                    fontFamily: 'SofiaPro-SemiBold',
-                    fontSize: 50,
-                    color: const Color(0xff130f10),
-                    height: 1.2,
+        body: SafeArea(
+          child: Container(
+            child: Column(
+              children: <Widget>[
+                Container(
+                  child: TextResponsive(
+                    'My planned meal',
+                    style: TextStyle(
+                      fontFamily: 'SofiaPro-SemiBold',
+                      fontSize: 50,
+                      color: const Color(0xff130f10),
+                      height: 1.2,
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                  textAlign: TextAlign.center,
                 ),
-              ),
-              Planned_mealv2_card(),],
-      ),
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: 5,
+                    itemBuilder: (BuildContext context, int index) {
+                      return PlannedMealv2Card(
+                        cost: 35,
+                        hlthScore: 2,
+                        loScore: 25,
+                        name: "Biriany",
+                        intgrediants: 5,
+                        path:
+                            "Assets/pmv2/1501791674-delish-chicken-curry-horizontal copy.png",
+                        price: 25,
+                        star: 2,
+                        steps: 2,
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
         bottomNavigationBar: BottomNavigationBar(
           items: [
@@ -102,7 +123,7 @@ class Plannedmeal extends StatelessWidget {
   }
 }
 
-class Planned_mealv2_card extends StatelessWidget {
+class PlannedMealv2Card extends StatelessWidget {
   final String path;
   final String name;
   final int star;
@@ -112,7 +133,16 @@ class Planned_mealv2_card extends StatelessWidget {
   final int cost;
   final int loScore;
   final int hlthScore;
-  Planned_mealv2_card({this.path,this.name,this.star,this.price,this.steps,this.intgrediants,this.cost,this.hlthScore,this.loScore});
+  PlannedMealv2Card(
+      {this.path,
+      this.name,
+      this.star,
+      this.price,
+      this.steps,
+      this.intgrediants,
+      this.cost,
+      this.hlthScore,
+      this.loScore});
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -120,33 +150,31 @@ class Planned_mealv2_card extends StatelessWidget {
         Stack(
           children: <Widget>[
             Image.asset(path),
-            Container(
+            Align(
+              alignment: Alignment.bottomRight,
+              child: TextResponsive(
+                '\$$price',
+                style: TextStyle(
+                  fontFamily: 'Gilroy-SemiBold',
+                  fontSize: 70,
+                  color: const Color(0xffff718b),
+                ),
+                textAlign: TextAlign.left,
+              ),
+            ),
+            Align(
+              alignment: Alignment.bottomLeft,
               child: Column(
-                children: <Widget>[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      TextResponsive(
-                        name,
-                        style: TextStyle(
-                          fontFamily: 'SofiaPro-SemiBold',
-                          fontSize: 50,
-                          color: const Color(0xff130f10),
-
-                        ),
-                        textAlign: TextAlign.left,
-                      ),
-                      TextResponsive(
-                        '\$$price',
-                        style: TextStyle(
-                          fontFamily: 'Gilroy-SemiBold',
-                          fontSize: 70,
-                          color: const Color(0xffff718b),
-
-                        ),
-                        textAlign: TextAlign.left,
-                      ),
-                    ],
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  TextResponsive(
+                    name,
+                    style: TextStyle(
+                      fontFamily: 'SofiaPro-SemiBold',
+                      fontSize: 50,
+                      color: const Color(0xff130f10),
+                    ),
+                    textAlign: TextAlign.left,
                   ),
                   Row(
                     children: <Widget>[
@@ -156,7 +184,7 @@ class Planned_mealv2_card extends StatelessWidget {
                       Image.asset('Assets/pmv2/star copy -9.png'),
                       Image.asset('Assets/pmv2/star copy -9.png'),
                     ],
-                  )
+                  ),
                 ],
               ),
             ),
@@ -203,6 +231,7 @@ class Planned_mealv2_card extends StatelessWidget {
           ],
         ),
         Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Container(
               width: 430.0.w,
@@ -210,8 +239,7 @@ class Planned_mealv2_card extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15.0),
                 color: const Color(0x80d9f1f4),
-                border: Border.all(
-                    width: 1.0, color: const Color(0x809df4fa)),
+                border: Border.all(width: 1.0, color: const Color(0x809df4fa)),
               ),
               child: TextResponsive(
                 '$loScore% leftover score',
@@ -229,8 +257,7 @@ class Planned_mealv2_card extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15.0),
                 color: const Color(0x80d9f1f4),
-                border: Border.all(
-                    width: 1.0, color: const Color(0x809df4fa)),
+                border: Border.all(width: 1.0, color: const Color(0x809df4fa)),
               ),
               child: TextResponsive(
                 '$hlthScore% Health score',

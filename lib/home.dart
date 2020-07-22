@@ -18,7 +18,6 @@ class _HomeState extends State<Home> {
             fontFamily: 'SofiaPro-Bold',
             fontSize: 80,
             color: const Color(0xff130f10),
-            height: 0.75,
           ),
           textAlign: TextAlign.left,
         ),
@@ -61,51 +60,23 @@ class _HomeState extends State<Home> {
                 ),
               ],
             ),
-            child: Row(
-              children: <Widget>[
-                Icon(
-                  Icons.search,
-                ),
-              ],
+            child: TextField(
+              decoration: InputDecoration(prefixIcon: Icon(Icons.search)),
             ),
           ),
-          Row(
-            children: <Widget>[
-              GestureDetector(
-                child: Column(
-                  children: <Widget>[
-                    // Adobe XD layer: 'Rectangle 5' (shape)
-                    Container(
-                      width: 140.0.h,
-                      height: 140.0.h,
-                      decoration: BoxDecoration(
-                        borderRadius:
-                            BorderRadius.all(Radius.elliptical(70.0, 70.0)),
-                        color: const Color(0xffffffff),
-                        boxShadow: [
-                          BoxShadow(
-                            color: const Color(0x0d130f10),
-                            offset: Offset(4, 6.928203105926514),
-                            blurRadius: 125,
-                          ),
-                        ],
-                      ),
-                      child: Image.asset('Assets/home/healthy.png.png'),
-                    ),
-                    TextResponsive(
-                      'Healthy',
-                      style: TextStyle(
-                        fontFamily: 'SofiaPro-Medium',
-                        fontSize: 40,
-                        color: const Color(0xff130f10),
-                        height: 1.5,
-                      ),
-                      textAlign: TextAlign.left,
-                    ),
-                  ],
-                ),
-              )
-            ],
+          Expanded(
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: 10,
+              itemBuilder: (BuildContext context, int index) {
+                return GestureDetector(
+                  child: HomeIcon(
+                    title: "sometitle",
+                    icon: 'Assets/home/healthy.png.png',
+                  ),
+                );
+              },
+            ),
           ),
           TextResponsive(
             'Max 15 min total time ',
@@ -113,7 +84,6 @@ class _HomeState extends State<Home> {
               fontFamily: 'SofiaPro-SemiBold',
               fontSize: 50,
               color: const Color(0xff130f10),
-              height: 1.2,
             ),
             textAlign: TextAlign.left,
           ),
@@ -183,6 +153,44 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
+    );
+  }
+}
+
+class HomeIcon extends StatelessWidget {
+  const HomeIcon({this.icon, this.title});
+  final String title;
+  final String icon;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Container(
+          width: 140.0.h,
+          height: 140.0.h,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.elliptical(70.0, 70.0)),
+            color: const Color(0xffffffff),
+            boxShadow: [
+              BoxShadow(
+                color: const Color(0x0d130f10),
+                offset: Offset(4, 6.928203105926514),
+                blurRadius: 125,
+              ),
+            ],
+          ),
+          child: Image.asset(icon),
+        ),
+        TextResponsive(
+          title,
+          style: TextStyle(
+            fontFamily: 'SofiaPro-Medium',
+            fontSize: 40,
+            color: const Color(0xff130f10),
+          ),
+          textAlign: TextAlign.left,
+        ),
+      ],
     );
   }
 }

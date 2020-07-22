@@ -87,7 +87,6 @@ class SignUp extends StatelessWidget {
                                 fontFamily: 'SofiaPro-Medium',
                                 fontSize: 40,
                                 color: const Color(0xff130f10),
-                                height: 1.5,
                               ),
                               textAlign: TextAlign.left,
                             ),
@@ -97,7 +96,6 @@ class SignUp extends StatelessWidget {
                                 fontFamily: 'SofiaPro-Medium',
                                 fontSize: 45,
                                 color: const Color(0xffff718b),
-                                height: 1.3333333333333333,
                               ),
                               textAlign: TextAlign.left,
                             ),
@@ -146,20 +144,19 @@ class Signupbutton extends StatelessWidget {
                   fontFamily: 'SofiaPro-Medium',
                   fontSize: 40,
                   color: Colors.white,
-                  height: 1.5,
                 ),
-                textAlign: TextAlign.left,
               ),
-              // Adobe XD layer: 'Ellipse 946' (shape)
               Container(
-                child: Image.asset(
-                  path,
-                  height: 40.h,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Image.asset(
+                    path,
+                    height: 30.h,
+                    width: 30.h,
+                  ),
                 ),
-                width: 100.0.h,
-                height: 100.0.h,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.elliptical(50.0, 50.0)),
+                  borderRadius: BorderRadius.all(Radius.circular(50)),
                   color: const Color(0xfff5f6f9),
                 ),
               ),
