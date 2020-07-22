@@ -210,52 +210,72 @@ class Plannedmeal extends StatelessWidget {
                   ),
                 ],
               ),
-              BottomAppBar(
-                child: Column(
-                  children: <Widget>[
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: <Widget>[
-                        GestureDetector(
-                          child: Column(
-                            children: <Widget>[
-                              Image.asset('Assets/pmv2/home-run (1).png'),
-                              TextResponsive('Home'),
-                            ],
-                          ),
-                        ),
-                        GestureDetector(
-                          child: Column(
-                            children: <Widget>[
-                              Image.asset('Assets/pmv2/search.png'),
-                              TextResponsive('Search'),
-                            ],
-                          ),
-                        ),
-                        GestureDetector(
-                          child: Column(
-                            children: <Widget>[
-                              Image.asset(
-                                  'Assets/pmv2/portable-document-format.png'),
-                              TextResponsive('Orders'),
-                            ],
-                          ),
-                        ),
-                        GestureDetector(
-                          child: Column(
-                            children: <Widget>[
-                              Image.asset('Assets/pmv2/user.png'),
-                              TextResponsive('User'),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
             ],
           ),
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.home,
+              ),
+              title: TextResponsive(
+                'Home',
+                style: TextStyle(
+                  fontFamily: 'SofiaPro-Medium',
+                  fontSize: 35,
+                  color: const Color(0x4d130f10),
+                  height: 1.7142857142857142,
+                ),
+                textAlign: TextAlign.left,
+              ),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.search,
+              ),
+              title: TextResponsive(
+                'Search',
+                style: TextStyle(
+                  fontFamily: 'SofiaPro-Medium',
+                  fontSize: 35,
+                  color: const Color(0x4d130f10),
+                  height: 1.7142857142857142,
+                ),
+                textAlign: TextAlign.left,
+              ),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.reorder,
+              ),
+              title: TextResponsive(
+                'Orders',
+                style: TextStyle(
+                  fontFamily: 'SofiaPro-Medium',
+                  fontSize: 35,
+                  color: const Color(0x4d130f10),
+                  height: 1.7142857142857142,
+                ),
+                textAlign: TextAlign.left,
+              ),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.account_box,
+              ),
+              title: TextResponsive(
+                'Profiles',
+                style: TextStyle(
+                  fontFamily: 'SofiaPro-Medium',
+                  fontSize: 35,
+                  color: const Color(0x4d130f10),
+                  height: 1.7142857142857142,
+                ),
+                textAlign: TextAlign.left,
+              ),
+            ),
+          ],
         ),
       ),
     );

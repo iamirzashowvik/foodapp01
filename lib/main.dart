@@ -17,6 +17,6 @@ class MyApp extends StatelessWidget {
       width: 1080, // Optional
       allowFontScaling: true,
     );
-    return Recipe();
+    return Plannedmeal();
   }
 }
