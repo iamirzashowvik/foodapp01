@@ -51,6 +51,7 @@ flutter:
   - Assets/pmv2/
   - Assets/signUp/
   - Assets/filter/
+  - Assets/recipe_details/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project01withsauiux/planned_mealv2.dart';
+import 'package:project01withsauiux/recipe_details_5.dart';
 import 'package:responsive_widgets/responsive_widgets.dart';
 import 'home.dart';
 
@@ -16,6 +17,6 @@ class MyApp extends StatelessWidget {
       width: 1080, // Optional
       allowFontScaling: true,
     );
-    return Home();
+    return Recipe();
   }
 }
