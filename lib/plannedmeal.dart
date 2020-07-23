@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_widgets/responsive_widgets.dart';
 
-class Plannedmeal extends StatelessWidget {
+class Plannedmeal1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ResponsiveWidgets.init(
@@ -30,7 +30,7 @@ class Plannedmeal extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
               ),
-              Planned_mealv2_card(
+              Planned_mealv1_card(
                 path:
                     'Assets/pmv2/1501791674-delish-chicken-curry-horizontal copy.png',
                 name: 'Mwxican rice with meat',
@@ -114,7 +114,7 @@ class Plannedmeal extends StatelessWidget {
   }
 }
 
-class Planned_mealv2_card extends StatelessWidget {
+class Planned_mealv1_card extends StatelessWidget {
   final String path;
   final String name;
   final int star;
@@ -124,7 +124,7 @@ class Planned_mealv2_card extends StatelessWidget {
   final int cost;
   final int loScore;
   final int hlthScore;
-  Planned_mealv2_card(
+  Planned_mealv1_card(
       {this.path,
       this.name,
       this.star,
@@ -140,6 +140,36 @@ class Planned_mealv2_card extends StatelessWidget {
       children: <Widget>[
         Stack(
           children: <Widget>[
+            Column(
+              children: <Widget>[
+                GestureDetector(
+                  child: Row(
+                    children: <Widget>[
+                      CircleAvatar(
+                        backgroundColor: Colors.white,
+                        child: Icon(
+                          Icons.delete,
+                          color: Colors.red,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                GestureDetector(
+                  child: Row(
+                    children: <Widget>[
+                      CircleAvatar(
+                        backgroundColor: Colors.white,
+                        child: Icon(
+                          Icons.check,
+                          color: Colors.green,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
             Image.asset(path),
             Container(
               child: Column(
@@ -257,57 +287,6 @@ class Planned_mealv2_card extends StatelessWidget {
                   color: const Color(0xff55ccd4),
                   height: 1.95,
                 ),
-              ),
-            ),
-          ],
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            GestureDetector(
-              child: Row(
-                children: <Widget>[
-                  CircleAvatar(
-                    backgroundColor: Color(0xFFE64445),
-                    child: Icon(
-                      Icons.delete,
-                      color: Colors.white,
-                    ),
-                  ),
-                  TextResponsive(
-                    'Remove',
-                    style: TextStyle(
-                      fontFamily: 'SofiaPro',
-                      fontSize: 35,
-                      color: const Color(0xff130f10),
-                      height: 1.1314285278320313,
-                    ),
-                    textAlign: TextAlign.left,
-                  ),
-                ],
-              ),
-            ),
-            GestureDetector(
-              child: Row(
-                children: <Widget>[
-                  CircleAvatar(
-                    backgroundColor: Color(0xFF0CE061),
-                    child: Icon(
-                      Icons.check,
-                      color: Colors.white,
-                    ),
-                  ),
-                  TextResponsive(
-                    'Mark as done',
-                    style: TextStyle(
-                      fontFamily: 'SofiaPro',
-                      fontSize: 35,
-                      color: const Color(0xff130f10),
-                      height: 1.1314285278320313,
-                    ),
-                    textAlign: TextAlign.left,
-                  ),
-                ],
               ),
             ),
           ],
