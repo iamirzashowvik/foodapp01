@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_widgets/responsive_widgets.dart';
 
@@ -18,39 +19,66 @@ class SignUp extends StatelessWidget {
         body: SafeArea(
           child: Center(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Container(
-                  height: 200.h,
-                  child: Stack(
-                    children: <Widget>[
-                      Image(
-                        image: AssetImage('Assets/signUp/main.png'),
-                      ),
-                      Image(
-                        image: AssetImage('Assets/signUp/mainleft.png'),
-                      ),
-                      Image(
-                        image: AssetImage('Assets/signUp/mainleft.png'),
-                      ),
-                    ],
+                  child: Flexible(
+                    child: Stack(
+                      children: <Widget>[
+                        Positioned(
+                          top: -362.h,
+                          left: 40.w,
+                          child: Image.asset(
+                            'Assets/signUp/main.png',
+                            height: 881.h,
+                            width: 888.w,
+                          ),
+                        ),
+                        Positioned(
+                          top: -100.06.h,
+                          left: 780.62.w,
+                          child: Image.asset(
+                            'Assets/signUp/mainleft.png',
+                            height: 408.h,
+                            width: 858.w,
+                          ),
+                        ),
+                        Positioned(
+                          top: -50.06.h,
+                          left: -25,
+                          child: Image.asset(
+                            'Assets/signUp/mainleft.png',
+                            height: 450.h,
+                            width: 858.w,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
+//                SizedBox(
+//                  height: 25,
+//                ),
                 Image(
-                  height: 300.h,
-                  width: 300.h,
+                  height: 200.h,
+                  width: 200.w,
                   image: AssetImage('Assets/signUp/grow-shop.png'),
+                ),
+                SizedBox(
+                  height: 10,
                 ),
                 TextResponsive(
                   'Sign Up',
                   style: TextStyle(
                     fontFamily: 'SofiaPro-Bold',
-                    fontSize: 80,
+                    fontSize: 70,
                     color: const Color(0xff100603),
-                    height: 1.2,
                   ),
-                  textAlign: TextAlign.left,
                 ),
                 // Adobe XD layer: 'Rectangle 2 copy 5' (shape)
+                SizedBox(
+                  height: 20,
+                ),
                 Signupbutton(
                   color: Color(0xFF3B5998),
                   text: 'Sign up with Facebook',
@@ -67,50 +95,56 @@ class SignUp extends StatelessWidget {
                   text: 'Sign up with Twitter',
                   path: 'Assets/signUp/twitter.png.png',
                 ),
-                Container(
-                  child: Stack(
-                    children: <Widget>[
-                      Align(
-                        alignment: Alignment.bottomLeft,
-                        child: Image.asset(
-                          'Assets/signUp/Place Your Image Here-3.png',
-                          height: 200,
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.center,
-                        child: Column(
-                          children: <Widget>[
-                            TextResponsive(
-                              'Already have an acount ?',
-                              style: TextStyle(
-                                fontFamily: 'SofiaPro-Medium',
-                                fontSize: 40,
-                                color: const Color(0xff130f10),
-                              ),
-                              textAlign: TextAlign.left,
+                SizedBox(
+                  height: 50,
+                ),
+                Stack(
+                  children: <Widget>[
+                    Align(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          SizedBox(
+                            height: 50,
+                          ),
+                          TextResponsive(
+                            'Already have an acount ?',
+                            style: TextStyle(
+                              fontFamily: 'SofiaPro-Medium',
+                              fontSize: 40,
+                              color: const Color(0xff130f10),
                             ),
-                            TextResponsive(
-                              'Sign in',
-                              style: TextStyle(
-                                fontFamily: 'SofiaPro-Medium',
-                                fontSize: 45,
-                                color: const Color(0xffff718b),
-                              ),
-                              textAlign: TextAlign.left,
+                            textAlign: TextAlign.left,
+                          ),
+                          TextResponsive(
+                            'Sign in',
+                            style: TextStyle(
+                              fontFamily: 'SofiaPro-Medium',
+                              fontSize: 45,
+                              color: const Color(0xffff718b),
                             ),
-                          ],
-                        ),
+                            textAlign: TextAlign.left,
+                          ),
+                        ],
                       ),
-                      Align(
-                        alignment: Alignment.bottomRight,
-                        child: Image.asset(
-                          'Assets/signUp/Place Your Image Here-3.png',
-                          height: 200,
-                        ),
+                    ),
+                    Positioned(
+                      child: Image.asset(
+                        'Assets/signUp/Place Your Image Here-3.png',
+                        height: 361.h,
+                        width: 147.w,
                       ),
-                    ],
-                  ),
+                    ),
+                    Positioned(
+                      right: 0,
+                      bottom: 0,
+                      child: Image.asset(
+                        'Assets/signUp/Place Your Image Here-3.png',
+                        height: 361.h,
+                        width: 147.w,
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -134,7 +168,7 @@ class Signupbutton extends StatelessWidget {
       child: Container(
         child: Padding(
           padding:
-              EdgeInsetsResponsive.symmetric(horizontal: 100, vertical: 30),
+              EdgeInsetsResponsive.symmetric(horizontal: 200.h, vertical: 30),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
@@ -148,7 +182,7 @@ class Signupbutton extends StatelessWidget {
               ),
               Container(
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: EdgeInsets.all(8.0),
                   child: Image.asset(
                     path,
                     height: 30.h,
@@ -164,7 +198,7 @@ class Signupbutton extends StatelessWidget {
           ),
         ),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20.0),
+          borderRadius: BorderRadius.circular(10.0),
           color: color,
           boxShadow: [
             BoxShadow(
