@@ -67,7 +67,7 @@ class _HomeState extends State<Home> {
           Expanded(
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: 10,
+              itemCount: 4,
               itemBuilder: (BuildContext context, int index) {
                 return GestureDetector(
                   child: HomeIcon(
@@ -163,34 +163,29 @@ class HomeIcon extends StatelessWidget {
   final String icon;
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Container(
-          width: 140.0.h,
-          height: 140.0.h,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.elliptical(70.0, 70.0)),
-            color: const Color(0xffffffff),
-            boxShadow: [
-              BoxShadow(
-                color: const Color(0x0d130f10),
-                offset: Offset(4, 6.928203105926514),
-                blurRadius: 125,
-              ),
-            ],
+    return Padding(
+      padding: EdgeInsets.all(20.0),
+      child: Column(
+        children: <Widget>[
+          CircleAvatar(
+            backgroundColor: Colors.white,
+            child: Image.asset(
+              icon,
+              width: 58.h,
+              height: 54.h,
+            ),
           ),
-          child: Image.asset(icon),
-        ),
-        TextResponsive(
-          title,
-          style: TextStyle(
-            fontFamily: 'SofiaPro-Medium',
-            fontSize: 40,
-            color: const Color(0xff130f10),
+          TextResponsive(
+            title,
+            style: TextStyle(
+              fontFamily: 'SofiaPro-Medium',
+              fontSize: 40,
+              color: const Color(0xff130f10),
+            ),
+            textAlign: TextAlign.left,
           ),
-          textAlign: TextAlign.left,
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
