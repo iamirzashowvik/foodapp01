@@ -14,100 +14,110 @@ class Plannedmeal extends StatelessWidget {
       height: 1920, // Optional
       width: 1080, // Optional
       allowFontScaling: true,
-      child: Scaffold(
-        body: Container(
-          child: Column(
-            children: <Widget>[
-              Container(
-                child: TextResponsive(
-                  'My planned meal',
-                  style: TextStyle(
-                    fontFamily: 'SofiaPro-SemiBold',
-                    fontSize: 50,
-                    color: const Color(0xff130f10),
-                    height: 1.2,
+      child: SafeArea(
+        child: Scaffold(
+          body: Container(
+            child: Column(
+              children: <Widget>[
+                Container(
+                  height: 100,
+                  child: Center(
+                    child: TextResponsive(
+                      'My planned meal',
+                      style: TextStyle(
+                        fontFamily: 'SofiaPro-SemiBold',
+                        fontSize: 50,
+                        color: const Color(0xff130f10),
+                        height: 1.2,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
                   ),
-                  textAlign: TextAlign.center,
+                ),
+                Divider(
+                  thickness: 2,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Planned_mealv2_card(
+                    path:
+                        'Assets/pmv2/1501791674-delish-chicken-curry-horizontal copy.png',
+                    name: 'Mwxican rice with meat',
+                    star: 5,
+                    price: 35,
+                    steps: 5,
+                    intgrediants: 12,
+                    cost: 10,
+                    loScore: 23,
+                    hlthScore: 43,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          bottomNavigationBar: BottomNavigationBar(
+            items: [
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.home,
+                  color: const Color(0xFF707070),
+                ),
+                title: TextResponsive(
+                  'Home',
+                  style: TextStyle(
+                    fontFamily: 'SofiaPro-Medium',
+                    fontSize: 35,
+                    color: const Color(0xFF707070),
+                  ),
+                  textAlign: TextAlign.left,
                 ),
               ),
-              Planned_mealv2_card(
-                path:
-                    'Assets/pmv2/1501791674-delish-chicken-curry-horizontal copy.png',
-                name: 'Mwxican rice with meat',
-                star: 5,
-                price: 35,
-                steps: 5,
-                intgrediants: 12,
-                cost: 10,
-                loScore: 23,
-                hlthScore: 43,
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.search,
+                  color: Color(0xFFFF718B),
+                ),
+                title: TextResponsive(
+                  'Search',
+                  style: TextStyle(
+                    fontFamily: 'SofiaPro-Medium',
+                    fontSize: 35,
+                    color: Color(0xFFFF718B),
+                  ),
+                ),
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.reorder,
+                  color: const Color(0xFF707070),
+                ),
+                title: TextResponsive(
+                  'Orders',
+                  style: TextStyle(
+                    fontFamily: 'SofiaPro-Medium',
+                    fontSize: 35,
+                    color: const Color(0xFF707070),
+                  ),
+                  textAlign: TextAlign.left,
+                ),
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.account_box,
+                  color: const Color(0xFF707070),
+                ),
+                title: TextResponsive(
+                  'Profiles',
+                  style: TextStyle(
+                    fontFamily: 'SofiaPro-Medium',
+                    fontSize: 35,
+                    color: const Color(0xFF707070),
+                  ),
+                  textAlign: TextAlign.left,
+                ),
               ),
             ],
           ),
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home,
-              ),
-              title: TextResponsive(
-                'Home',
-                style: TextStyle(
-                  fontFamily: 'SofiaPro-Medium',
-                  fontSize: 35,
-                  color: const Color(0x4d130f10),
-                  height: 1.7142857142857142,
-                ),
-                textAlign: TextAlign.left,
-              ),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.search,
-              ),
-              title: TextResponsive(
-                'Search',
-                style: TextStyle(
-                  fontFamily: 'SofiaPro-Medium',
-                  fontSize: 35,
-                  color: const Color(0x4d130f10),
-                  height: 1.7142857142857142,
-                ),
-                textAlign: TextAlign.left,
-              ),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.reorder,
-              ),
-              title: TextResponsive(
-                'Orders',
-                style: TextStyle(
-                  fontFamily: 'SofiaPro-Medium',
-                  fontSize: 35,
-                  color: const Color(0x4d130f10),
-                  height: 1.7142857142857142,
-                ),
-                textAlign: TextAlign.left,
-              ),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.account_box,
-              ),
-              title: TextResponsive(
-                'Profiles',
-                style: TextStyle(
-                  fontFamily: 'SofiaPro-Medium',
-                  fontSize: 35,
-                  color: const Color(0x4d130f10),
-                  height: 1.7142857142857142,
-                ),
-                textAlign: TextAlign.left,
-              ),
-            ),
-          ],
         ),
       ),
     );
@@ -141,11 +151,43 @@ class Planned_mealv2_card extends StatelessWidget {
         Stack(
           children: <Widget>[
             Image.asset(path),
-            Container(
+            Positioned(
+              top: 10,
+              right: 10,
               child: Column(
                 children: <Widget>[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  GestureDetector(
+                    child: CircleAvatar(
+                      backgroundColor: Colors.white,
+                      child: Icon(
+                        Icons.delete,
+                        color: Colors.red,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  GestureDetector(
+                    child: CircleAvatar(
+                      backgroundColor: Colors.white,
+                      child: Icon(
+                        Icons.check,
+                        color: Colors.green,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Positioned(
+              left: 0,
+              bottom: 0,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       TextResponsive(
                         name,
@@ -154,43 +196,83 @@ class Planned_mealv2_card extends StatelessWidget {
                           fontSize: 50,
                           color: const Color(0xff130f10),
                         ),
-                        textAlign: TextAlign.left,
                       ),
-                      TextResponsive(
-                        '\$$price',
-                        style: TextStyle(
-                          fontFamily: 'Gilroy-SemiBold',
-                          fontSize: 70,
-                          color: const Color(0xffff718b),
-                        ),
-                        textAlign: TextAlign.left,
+                      Row(
+                        children: <Widget>[
+                          Image.asset(
+                            'Assets/pmv2/star copy -9.png',
+                            height: 31.h,
+                            width: 33.h,
+                          ),
+                          Image.asset(
+                            'Assets/pmv2/star copy -9.png',
+                            height: 31.h,
+                            width: 33.h,
+                          ),
+                          Image.asset(
+                            'Assets/pmv2/star copy -9.png',
+                            height: 31.h,
+                            width: 33.h,
+                          ),
+                          Image.asset(
+                            'Assets/pmv2/star copy -9.png',
+                            height: 31.h,
+                            width: 33.h,
+                          ),
+                          Image.asset(
+                            'Assets/pmv2/star copy -9.png',
+                            height: 31.h,
+                            width: 33.h,
+                          ),
+                        ],
                       ),
                     ],
                   ),
-                  Row(
-                    children: <Widget>[
-                      Image.asset('Assets/pmv2/star copy -9.png'),
-                      Image.asset('Assets/pmv2/star copy -9.png'),
-                      Image.asset('Assets/pmv2/star copy -9.png'),
-                      Image.asset('Assets/pmv2/star copy -9.png'),
-                      Image.asset('Assets/pmv2/star copy -9.png'),
-                    ],
-                  )
+                  SizedBox(
+                    width: 100,
+                  ),
+                  TextResponsive(
+                    '\$$price',
+                    style: TextStyle(
+                      fontFamily: 'Gilroy-SemiBold',
+                      fontSize: 70,
+                      color: const Color(0xffff718b),
+                    ),
+                    textAlign: TextAlign.left,
+                  ),
                 ],
               ),
             ),
           ],
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            Image.asset('Assets/pmv2/time copy 4.png'),
-            Image.asset('Assets/pmv2/cooking copy 5.png'),
-            Image.asset('Assets/pmv2/dollar copy 6.png'),
-          ],
+        SizedBox(
+          height: 15,
         ),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            Image.asset(
+              'Assets/pmv2/time copy 4.png',
+              height: 45.h,
+              width: 45.h,
+            ),
+            Image.asset(
+              'Assets/pmv2/cooking copy 5.png',
+              height: 45.h,
+              width: 45.h,
+            ),
+            Image.asset(
+              'Assets/pmv2/dollar copy 6.png',
+              height: 45.h,
+              width: 45.h,
+            ),
+          ],
+        ),
+        SizedBox(
+          height: 7,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
             TextResponsive(
               '$steps steps',
@@ -221,23 +303,28 @@ class Planned_mealv2_card extends StatelessWidget {
             ),
           ],
         ),
+        SizedBox(
+          height: 15,
+        ),
         Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             Container(
               width: 430.0.w,
               height: 120.0.h,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15.0),
-                color: const Color(0x80d9f1f4),
-                border: Border.all(width: 1.0, color: const Color(0x809df4fa)),
+                color: Color(0x80d9f1f4),
+                border: Border.all(width: 1.0, color: Color(0x809df4fa)),
               ),
-              child: TextResponsive(
-                '$loScore% leftover score',
-                style: TextStyle(
-                  fontFamily: 'SofiaPro-Medium',
-                  fontSize: 40,
-                  color: const Color(0xff55ccd4),
-                  height: 1.95,
+              child: Center(
+                child: TextResponsive(
+                  '$loScore% leftover score',
+                  style: TextStyle(
+                    fontFamily: 'SofiaPro-Medium',
+                    fontSize: 40,
+                    color: Color(0xff55ccd4),
+                  ),
                 ),
               ),
             ),
@@ -249,13 +336,14 @@ class Planned_mealv2_card extends StatelessWidget {
                 color: const Color(0x80d9f1f4),
                 border: Border.all(width: 1.0, color: const Color(0x809df4fa)),
               ),
-              child: TextResponsive(
-                '$hlthScore% Health score',
-                style: TextStyle(
-                  fontFamily: 'SofiaPro-Medium',
-                  fontSize: 40,
-                  color: const Color(0xff55ccd4),
-                  height: 1.95,
+              child: Center(
+                child: TextResponsive(
+                  '$hlthScore% Health score',
+                  style: TextStyle(
+                    fontFamily: 'SofiaPro-Medium',
+                    fontSize: 40,
+                    color: Color(0xff55ccd4),
+                  ),
                 ),
               ),
             ),

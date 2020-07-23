@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_widgets/responsive_widgets.dart';
 
@@ -28,24 +29,28 @@ class Plannedmeal1 extends StatelessWidget {
                         fontFamily: 'SofiaPro-SemiBold',
                         fontSize: 50,
                         color: const Color(0xff130f10),
-                        height: 1.2,
                       ),
                       textAlign: TextAlign.center,
                     ),
                   ),
                 ),
-                Divider(),
-                Planned_mealv1_card(
-                  path:
-                      'Assets/pmv2/1501791674-delish-chicken-curry-horizontal copy.png',
-                  name: 'Mexican rice with meat',
-                  star: 5,
-                  price: 35,
-                  steps: 5,
-                  intgrediants: 12,
-                  cost: 10,
-                  loScore: 23,
-                  hlthScore: 43,
+                Divider(
+                  thickness: 2,
+                ),
+                Padding(
+                  padding: EdgeInsets.all(15.0),
+                  child: Planned_mealv1_card(
+                    path:
+                        'Assets/pmv2/1501791674-delish-chicken-curry-horizontal copy.png',
+                    name: 'Mexican rice with meat',
+                    star: 5,
+                    price: 35,
+                    steps: 5,
+                    intgrediants: 12,
+                    cost: 10,
+                    loScore: 23,
+                    hlthScore: 43,
+                  ),
                 ),
               ],
             ),
@@ -55,14 +60,14 @@ class Plannedmeal1 extends StatelessWidget {
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.home,
+                  color: const Color(0xFF707070),
                 ),
                 title: TextResponsive(
                   'Home',
                   style: TextStyle(
                     fontFamily: 'SofiaPro-Medium',
                     fontSize: 35,
-                    color: const Color(0x4d130f10),
-                    height: 1.7142857142857142,
+                    color: const Color(0xFF707070),
                   ),
                   textAlign: TextAlign.left,
                 ),
@@ -70,29 +75,28 @@ class Plannedmeal1 extends StatelessWidget {
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.search,
+                  color: Color(0xFFFF718B),
                 ),
                 title: TextResponsive(
                   'Search',
                   style: TextStyle(
                     fontFamily: 'SofiaPro-Medium',
                     fontSize: 35,
-                    color: const Color(0x4d130f10),
-                    height: 1.7142857142857142,
+                    color: Color(0xFFFF718B),
                   ),
-                  textAlign: TextAlign.left,
                 ),
               ),
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.reorder,
+                  color: const Color(0xFF707070),
                 ),
                 title: TextResponsive(
                   'Orders',
                   style: TextStyle(
                     fontFamily: 'SofiaPro-Medium',
                     fontSize: 35,
-                    color: const Color(0x4d130f10),
-                    height: 1.7142857142857142,
+                    color: const Color(0xFF707070),
                   ),
                   textAlign: TextAlign.left,
                 ),
@@ -100,14 +104,14 @@ class Plannedmeal1 extends StatelessWidget {
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.account_box,
+                  color: const Color(0xFF707070),
                 ),
                 title: TextResponsive(
                   'Profiles',
                   style: TextStyle(
                     fontFamily: 'SofiaPro-Medium',
                     fontSize: 35,
-                    color: const Color(0x4d130f10),
-                    height: 1.7142857142857142,
+                    color: const Color(0xFF707070),
                   ),
                   textAlign: TextAlign.left,
                 ),
@@ -161,6 +165,9 @@ class Planned_mealv1_card extends StatelessWidget {
                       ),
                     ),
                   ),
+                  SizedBox(
+                    height: 10,
+                  ),
                   GestureDetector(
                     child: CircleAvatar(
                       backgroundColor: Colors.white,
@@ -176,10 +183,11 @@ class Planned_mealv1_card extends StatelessWidget {
             Positioned(
               left: 0,
               bottom: 0,
-              child: Column(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       TextResponsive(
                         name,
@@ -189,37 +197,82 @@ class Planned_mealv1_card extends StatelessWidget {
                           color: const Color(0xff130f10),
                         ),
                       ),
-                      TextResponsive(
-                        '\$$price',
-                        style: TextStyle(
-                          fontFamily: 'Gilroy-SemiBold',
-                          fontSize: 70,
-                          color: const Color(0xffff718b),
-                        ),
-                        textAlign: TextAlign.left,
+                      Row(
+                        children: <Widget>[
+                          Image.asset(
+                            'Assets/pmv2/star copy -9.png',
+                            height: 31.h,
+                            width: 33.h,
+                          ),
+                          Image.asset(
+                            'Assets/pmv2/star copy -9.png',
+                            height: 31.h,
+                            width: 33.h,
+                          ),
+                          Image.asset(
+                            'Assets/pmv2/star copy -9.png',
+                            height: 31.h,
+                            width: 33.h,
+                          ),
+                          Image.asset(
+                            'Assets/pmv2/star copy -9.png',
+                            height: 31.h,
+                            width: 33.h,
+                          ),
+                          Image.asset(
+                            'Assets/pmv2/star copy -9.png',
+                            height: 31.h,
+                            width: 33.h,
+                          ),
+                        ],
                       ),
                     ],
                   ),
-                  Image.asset(
-                    'Assets/pmv2/star copy -9.png',
-                    height: 31.h,
-                    width: 33.h,
+                  SizedBox(
+                    width: 100,
+                  ),
+                  TextResponsive(
+                    '\$$price',
+                    style: TextStyle(
+                      fontFamily: 'Gilroy-SemiBold',
+                      fontSize: 70,
+                      color: const Color(0xffff718b),
+                    ),
+                    textAlign: TextAlign.left,
                   ),
                 ],
               ),
             ),
           ],
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            Image.asset('Assets/pmv2/time copy 4.png'),
-            Image.asset('Assets/pmv2/cooking copy 5.png'),
-            Image.asset('Assets/pmv2/dollar copy 6.png'),
-          ],
+        SizedBox(
+          height: 15,
         ),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            Image.asset(
+              'Assets/pmv2/time copy 4.png',
+              height: 45.h,
+              width: 45.h,
+            ),
+            Image.asset(
+              'Assets/pmv2/cooking copy 5.png',
+              height: 45.h,
+              width: 45.h,
+            ),
+            Image.asset(
+              'Assets/pmv2/dollar copy 6.png',
+              height: 45.h,
+              width: 45.h,
+            ),
+          ],
+        ),
+        SizedBox(
+          height: 7,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
             TextResponsive(
               '$steps steps',
@@ -249,6 +302,9 @@ class Planned_mealv1_card extends StatelessWidget {
               ),
             ),
           ],
+        ),
+        SizedBox(
+          height: 15,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

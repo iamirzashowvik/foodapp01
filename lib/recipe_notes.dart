@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:responsive_widgets/responsive_widgets.dart';
 
 class Recipe_notes extends StatelessWidget {
@@ -52,13 +53,14 @@ class Recipe_notes extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Container(
-                      color: Colors.black,
                       height: 1000.h,
                       width: 1005.w,
                       child: Stack(
                         children: <Widget>[
-                          Image.asset(
-                            'Assets/recipe_notes/Layer 9.png',
+                          Container(
+                            child: Image.asset(
+                              'Assets/recipe_notes/Layer 9.png',
+                            ),
                           ),
                           Positioned(
                             right: 5,
