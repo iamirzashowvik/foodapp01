@@ -362,6 +362,9 @@ class Planned_mealv2_card extends StatelessWidget {
                       color: Colors.white,
                     ),
                   ),
+                  SizedBox(
+                    width: 10,
+                  ),
                   TextResponsive(
                     'Remove',
                     style: TextStyle(
@@ -384,6 +387,9 @@ class Planned_mealv2_card extends StatelessWidget {
                       Icons.check,
                       color: Colors.white,
                     ),
+                  ),
+                  SizedBox(
+                    width: 10,
                   ),
                   TextResponsive(
                     'Mark as done',
