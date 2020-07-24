@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project01withsauiux/widgets/reusablecard.dart';
 import 'package:responsive_widgets/responsive_widgets.dart';
 
 class Home extends StatefulWidget {
@@ -22,7 +23,6 @@ class _HomeState extends State<Home> {
           textAlign: TextAlign.left,
         ),
         actions: <Widget>[
-          // Adobe XD layer: 'Rectangle 3' (shape)
           Container(
             width: 110.0.h,
             height: 110.0.h,
@@ -30,8 +30,7 @@ class _HomeState extends State<Home> {
               borderRadius: BorderRadius.all(Radius.elliptical(55.0, 55.0)),
               color: const Color(0x1aff718b),
             ),
-            child: // Adobe XD layer: 'filter.png' (shape)
-                Container(
+            child: Container(
               width: 38.0.h,
               height: 38.0.h,
               decoration: BoxDecoration(
@@ -47,8 +46,8 @@ class _HomeState extends State<Home> {
       body: Column(
         children: <Widget>[
           Container(
-            width: 1005.0,
-            height: 130.0,
+            // width: 1005.0,
+            // height: 130.0,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20.0),
               color: const Color(0xffffffff),
@@ -61,10 +60,13 @@ class _HomeState extends State<Home> {
               ],
             ),
             child: TextField(
-              decoration: InputDecoration(prefixIcon: Icon(Icons.search)),
+              decoration: InputDecoration(
+                prefixIcon: Icon(Icons.search),
+              ),
             ),
           ),
-          Expanded(
+          Container(
+            height: 250.h,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: 4,
@@ -87,6 +89,30 @@ class _HomeState extends State<Home> {
             ),
             textAlign: TextAlign.left,
           ),
+          Expanded(
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: 2,
+              itemBuilder: (BuildContext context, int index) {
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Planned_mealv2_card(
+                    path:
+                        'Assets/pmv2/1501791674-delish-chicken-curry-horizontal copy.png',
+                    name: 'Mwxican rice with meat',
+                    star: 5,
+                    price: 35,
+                    steps: 5,
+                    intgrediants: 12,
+                    cost: 10,
+                    loScore: 23,
+                    hlthScore: 43,
+                    isRemove: false,
+                  ),
+                );
+              },
+            ),
+          ),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -101,9 +127,7 @@ class _HomeState extends State<Home> {
                 fontFamily: 'SofiaPro-Medium',
                 fontSize: 35,
                 color: const Color(0x4d130f10),
-                height: 1.7142857142857142,
               ),
-              textAlign: TextAlign.left,
             ),
           ),
           BottomNavigationBarItem(
@@ -116,7 +140,6 @@ class _HomeState extends State<Home> {
                 fontFamily: 'SofiaPro-Medium',
                 fontSize: 35,
                 color: const Color(0x4d130f10),
-                height: 1.7142857142857142,
               ),
               textAlign: TextAlign.left,
             ),
@@ -131,7 +154,6 @@ class _HomeState extends State<Home> {
                 fontFamily: 'SofiaPro-Medium',
                 fontSize: 35,
                 color: const Color(0x4d130f10),
-                height: 1.7142857142857142,
               ),
               textAlign: TextAlign.left,
             ),
@@ -146,7 +168,6 @@ class _HomeState extends State<Home> {
                 fontFamily: 'SofiaPro-Medium',
                 fontSize: 35,
                 color: const Color(0x4d130f10),
-                height: 1.7142857142857142,
               ),
               textAlign: TextAlign.left,
             ),

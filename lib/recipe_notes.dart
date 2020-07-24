@@ -58,8 +58,11 @@ class Recipe_notes extends StatelessWidget {
                       child: Stack(
                         children: <Widget>[
                           Container(
-                            child: Image.asset(
-                              'Assets/recipe_notes/Layer 9.png',
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image: ExactAssetImage(
+                                      'Assets/recipe_notes/Layer 9.png'),
+                                  fit: BoxFit.cover),
                             ),
                           ),
                           Positioned(
@@ -111,6 +114,7 @@ class Recipe_notes extends StatelessWidget {
                       height: 20,
                     ),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Column(
                           children: <Widget>[
@@ -139,9 +143,6 @@ class Recipe_notes extends StatelessWidget {
                               ],
                             ),
                           ],
-                        ),
-                        SizedBox(
-                          width: 80,
                         ),
                         Row(
                           children: <Widget>[

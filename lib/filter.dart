@@ -25,256 +25,267 @@ class _Filter_2State extends State<Filter_2> {
       child: SafeArea(
         child: Scaffold(
           backgroundColor: Colors.white,
-          body: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Container(
-                height: 50,
-                child: Row(
-                  children: <Widget>[
-                    SizedBox(
-                      width: 18,
-                    ),
-                    //Image.asset('Assets/filter/arrow.png'),
-                    Icon(Icons.arrow_back),
-                    SizedBox(
-                      width: 150,
-                    ),
-                    TextResponsive(
-                      'Filter',
-                      style: TextStyle(
-                        fontFamily: 'SofiaPro-SemiBold',
-                        fontSize: 50,
-                        color: Color(0xff130f10),
+          body: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  height: 50,
+                  child: Row(
+                    children: <Widget>[
+                      SizedBox(
+                        width: 18,
                       ),
-                    ),
-                  ],
+                      //Image.asset('Assets/filter/arrow.png'),
+                      Icon(Icons.arrow_back),
+                      SizedBox(
+                        width: 150,
+                      ),
+                      TextResponsive(
+                        'Filter',
+                        style: TextStyle(
+                          fontFamily: 'SofiaPro-SemiBold',
+                          fontSize: 50,
+                          color: Color(0xff130f10),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              Divider(
-                thickness: 2,
-              ),
-              Padding(
-                padding: EdgeInsets.all(18.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    TextResponsive(
-                      'Health',
-                      style: TextStyle(
-                        fontFamily: 'SofiaPro-Medium',
-                        fontSize: 50.0,
-                        color: const Color(0xff130f10),
+                Divider(
+                  thickness: 2,
+                ),
+                Padding(
+                  padding: EdgeInsets.all(18.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      TextResponsive(
+                        'Health',
+                        style: TextStyle(
+                          fontFamily: 'SofiaPro-Medium',
+                          fontSize: 50.0,
+                          color: const Color(0xff130f10),
+                        ),
                       ),
-                    ),
 
-                    SliderTheme(
-                      data: SliderTheme.of(context).copyWith(
-                        inactiveTrackColor: Color(0xFFFEA6B6),
-                        activeTrackColor: Color(0xFFFE718B),
-                        thumbColor: Color(0xFFFE718B),
-                        thumbShape:
-                            RoundSliderThumbShape(enabledThumbRadius: 15.0),
-                        overlayShape:
-                            RoundSliderOverlayShape(overlayRadius: 30.0),
+                      SliderTheme(
+                        data: SliderTheme.of(context).copyWith(
+                          inactiveTrackColor: Color(0xFFFEA6B6),
+                          activeTrackColor: Color(0xFFFE718B),
+                          thumbColor: Color(0xFFFE718B),
+                          thumbShape:
+                              RoundSliderThumbShape(enabledThumbRadius: 15.0),
+                          overlayShape:
+                              RoundSliderOverlayShape(overlayRadius: 30.0),
+                        ),
+                        child: Slider(
+                          value: slidervalue.toDouble(),
+                          min: 0,
+                          max: 10,
+                          onChanged: (double newValue) {
+                            setState(() {
+                              slidervalue = newValue.round();
+                            });
+                          },
+                        ),
                       ),
-                      child: Slider(
-                        value: slidervalue.toDouble(),
-                        min: 0,
-                        max: 10,
-                        onChanged: (double newValue) {
-                          setState(() {
-                            slidervalue = newValue.round();
-                          });
-                        },
-                      ),
-                    ),
 
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        // Adobe XD layer: 'Ellipse 512' (shape)
-                        Container(
-                          width: 60.h,
-                          height: 60.0.h,
-                          decoration: BoxDecoration(
-                            borderRadius:
-                                BorderRadius.all(Radius.elliptical(30.0, 30.0)),
-                            border: Border.all(
-                                width: 2.0, color: Color(0x33000000)),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        TextResponsive(
-                          'Make me healthier',
-                          style: TextStyle(
-                            fontFamily: 'SofiaPro-Light',
-                            fontSize: 35,
-                            color: const Color(0xb3130f10),
-                            height: 1.7142857142857142,
-                          ),
-                          textAlign: TextAlign.left,
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    TextResponsive(
-                      'Household sizes',
-                      style: TextStyle(
-                        fontFamily: 'SofiaPro-Medium',
-                        fontSize: 50.0,
-                        color: const Color(0xff130f10),
-                        height: 1.2,
-                      ),
-                      textAlign: TextAlign.left,
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Row(
-                      children: <Widget>[
-                        // Adobe XD layer: 'Rectangle 7 copy 11' (shape)
-                        Countbutton(1),
-                        Countbutton(2),
-                        Countbutton(3),
-                        Countbutton(4),
-                        Countbutton(5),
-                        Countbutton(6),
-                        Countbutton(7),
-                        Countbutton(8),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    TextResponsive(
-                      'Diet',
-                      style: TextStyle(
-                        fontFamily: 'SofiaPro-Medium',
-                        fontSize: 50,
-                        color: const Color(0xff130f10),
-                      ),
-                      textAlign: TextAlign.left,
-                    ),
-                    SizedBox(
-                      height: 15.h,
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Diet_card(name: 'Vegetarian', color: Color(0xFFFE718B)),
-                        Diet_card(name: 'Vegan', color: Color(0xFFFE718B)),
-                        Diet_card(name: 'Paleo', color: Colors.white),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    TextResponsive(
-                      'Intolerance',
-                      style: TextStyle(
-                        fontFamily: 'SofiaPro-Medium',
-                        fontSize: 50,
-                        color: const Color(0xff130f10),
-                      ),
-                      textAlign: TextAlign.left,
-                    ),
-                    SizedBox(
-                      height: 15.h,
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Diet_card(name: 'Dairy', color: Color(0xFFFE718B)),
-                        Diet_card(
-                          name: 'Egg',
-                          color: Colors.white,
-                        ),
-                        Diet_card(name: 'Gluten', color: Color(0xFFFE718B)),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    TextResponsive(
-                      'Excluded Ingredients',
-                      style: TextStyle(
-                        fontFamily: 'SofiaPro-Medium',
-                        fontSize: 50,
-                        color: const Color(0xff130f10),
-                      ),
-                      textAlign: TextAlign.left,
-                    ),
-                    ExcludedING(
-                      name: 'Cucumber',
-                    ),
-                    ExcludedING(
-                      name: 'Cheze',
-                    ),
-                    ExcludedING(
-                      name: 'Brinjal',
-                    ),
-                    // Adobe XD layer: 'Rectangle 4 copy 5' (shape)
-                    Container(
-                      width: 1005.0.h,
-                      height: 150.0.h,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30.0),
-                        color: const Color(0xffffffff),
-                        boxShadow: [
-                          BoxShadow(
-                            color: const Color(0x0d130f10),
-                            offset: Offset(4, 6.928203105926514),
-                            blurRadius: 125,
-                          ),
-                        ],
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
+                          // Adobe XD layer: 'Ellipse 512' (shape)
+                          Container(
+                            width: 60.h,
+                            height: 60.0.h,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(
+                                  Radius.elliptical(30.0, 30.0)),
+                              border: Border.all(
+                                  width: 2.0, color: Color(0x33000000)),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 20,
+                          ),
                           TextResponsive(
-                            'Excluded Ingredient',
+                            'Make me healthier',
                             style: TextStyle(
-                              fontFamily: 'SofiaPro',
-                              fontSize: 40,
-                              color: const Color(0x80130f10),
-                              height: 1.5,
+                              fontFamily: 'SofiaPro-Light',
+                              fontSize: 35,
+                              color: const Color(0xb3130f10),
+                              height: 1.7142857142857142,
                             ),
                             textAlign: TextAlign.left,
                           ),
-                          // Adobe XD layer: 'Rectangle 7 copy 16' (shape)
-                          GestureDetector(
-                            onTap: () {},
-                            child: Container(
-                              width: 230.0.w,
-                              height: 100.0.h,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(15.0),
-                                color: const Color(0xfffe718b),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      TextResponsive(
+                        'Household sizes',
+                        style: TextStyle(
+                          fontFamily: 'SofiaPro-Medium',
+                          fontSize: 50.0,
+                          color: const Color(0xff130f10),
+                          height: 1.2,
+                        ),
+                        textAlign: TextAlign.left,
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Row(
+                        children: <Widget>[
+                          // Adobe XD layer: 'Rectangle 7 copy 11' (shape)
+                          Countbutton(1),
+                          Countbutton(2),
+                          Countbutton(3),
+                          Countbutton(4),
+                          Countbutton(5),
+                          Countbutton(6),
+                          Countbutton(7),
+                          Countbutton(8),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      TextResponsive(
+                        'Diet',
+                        style: TextStyle(
+                          fontFamily: 'SofiaPro-Medium',
+                          fontSize: 50,
+                          color: const Color(0xff130f10),
+                        ),
+                        textAlign: TextAlign.left,
+                      ),
+                      SizedBox(
+                        height: 15.h,
+                      ),
+                      Container(
+                        height: 150.h,
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          children: <Widget>[
+                            Diet_card(
+                                name: 'Vegetarian', color: Color(0xFFFE718B)),
+                            Diet_card(name: 'Vegan', color: Color(0xFFFE718B)),
+                            Diet_card(name: 'Paleo', color: Colors.white),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      TextResponsive(
+                        'Intolerance',
+                        style: TextStyle(
+                          fontFamily: 'SofiaPro-Medium',
+                          fontSize: 50,
+                          color: const Color(0xff130f10),
+                        ),
+                        textAlign: TextAlign.left,
+                      ),
+                      SizedBox(
+                        height: 15.h,
+                      ),
+                      Container(
+                        height: 150.h,
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          children: <Widget>[
+                            Diet_card(name: 'Dairy', color: Color(0xFFFE718B)),
+                            Diet_card(
+                              name: 'Egg',
+                              color: Colors.white,
+                            ),
+                            Diet_card(name: 'Gluten', color: Color(0xFFFE718B)),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      TextResponsive(
+                        'Excluded Ingredients',
+                        style: TextStyle(
+                          fontFamily: 'SofiaPro-Medium',
+                          fontSize: 50,
+                          color: const Color(0xff130f10),
+                        ),
+                        textAlign: TextAlign.left,
+                      ),
+                      ExcludedING(
+                        name: 'Cucumber',
+                      ),
+                      ExcludedING(
+                        name: 'Cheze',
+                      ),
+                      ExcludedING(
+                        name: 'Brinjal',
+                      ),
+                      // Adobe XD layer: 'Rectangle 4 copy 5' (shape)
+                      Container(
+                        width: 1005.0.h,
+                        height: 150.0.h,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30.0),
+                          color: const Color(0xffffffff),
+                          boxShadow: [
+                            BoxShadow(
+                              color: const Color(0x0d130f10),
+                              offset: Offset(4, 6.928203105926514),
+                              blurRadius: 125,
+                            ),
+                          ],
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: <Widget>[
+                            TextResponsive(
+                              'Excluded Ingredient',
+                              style: TextStyle(
+                                fontFamily: 'SofiaPro',
+                                fontSize: 40,
+                                color: const Color(0x80130f10),
+                                height: 1.5,
                               ),
-                              child: Center(
-                                child: TextResponsive(
-                                  'Add',
-                                  style: TextStyle(
-                                    fontFamily: 'SofiaPro',
-                                    fontSize: 40,
-                                    color: const Color(0xfff7f7fa),
-                                    height: 1.5,
+                              textAlign: TextAlign.left,
+                            ),
+                            // Adobe XD layer: 'Rectangle 7 copy 16' (shape)
+                            GestureDetector(
+                              onTap: () {},
+                              child: Container(
+                                width: 230.0.w,
+                                height: 100.0.h,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15.0),
+                                  color: const Color(0xfffe718b),
+                                ),
+                                child: Center(
+                                  child: TextResponsive(
+                                    'Add',
+                                    style: TextStyle(
+                                      fontFamily: 'SofiaPro',
+                                      fontSize: 40,
+                                      color: const Color(0xfff7f7fa),
+                                      height: 1.5,
+                                    ),
+                                    textAlign: TextAlign.center,
                                   ),
-                                  textAlign: TextAlign.center,
                                 ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
