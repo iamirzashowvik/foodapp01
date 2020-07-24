@@ -1,6 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_widgets/responsive_widgets.dart';
+import 'package:pie_chart/pie_chart.dart';
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 
 class Recipe extends StatefulWidget {
   @override
@@ -8,6 +12,19 @@ class Recipe extends StatefulWidget {
 }
 
 class _RecipeState extends State<Recipe> {
+  bool toggle = false;
+  Map<String, double> dataMap = Map();
+  List<Color> colorList = [
+    Color(0xFFFFBD4B),
+    Color(0xFF55CCD4),
+  ];
+  @override
+  void initState() {
+    super.initState();
+    dataMap.putIfAbsent("Leftover Ingredients", () => 75);
+    dataMap.putIfAbsent("Used Ingredients", () => 25);
+  }
+
   @override
   Widget build(BuildContext context) {
     ResponsiveWidgets.init(
@@ -20,119 +37,218 @@ class _RecipeState extends State<Recipe> {
       height: 1920, // Optional
       width: 1080, // Optional
       allowFontScaling: true,
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          leading: Image.asset('Assets/recipe_details/arrow.png'),
-          title: TextResponsive(
-            'Recipe',
-            style: TextStyle(
-              fontFamily: 'SofiaPro-SemiBold',
-              fontSize: 50,
-              color: const Color(0xff130f10),
-              height: 1.2,
-            ),
-            textAlign: TextAlign.center,
-          ),
-        ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              height: 50,
-              child: Stack(
-                children: <Widget>[
-                  Image.asset(
-                      'Assets/recipe_details/kisspng-pizza-margherita-bacon-delivery-cheese-pizza-menu-5b2597bcabaf52.8918615115291903327032.png'),
-                  Image.asset(
-                      'Assets/recipe_details/Place Your Image Here.png'),
-                  Image.asset(
-                      'Assets/recipe_details/Place Your Image Here.png'),
-                  Image.asset(
-                      'Assets/recipe_details/Place Your Image Here (Double Click to Edit)-1.png'),
-                  Image.asset(
-                      'Assets/recipe_details/Place Your Image Here (Double Click to Edit).png'),
-                  Image.asset(
-                      'Assets/recipe_details/Vector Smart Object (Double Click To Edit).png'),
-                ],
-              ),
-            ),
-            TextResponsive(
-              'Tomotto pizza',
-              style: TextStyle(
-                fontFamily: 'SofiaPro-Bold',
-                fontSize: 75.h,
-                color: const Color(0xff130f10),
-                height: 0.8,
-              ),
-              textAlign: TextAlign.left,
-            ),
-            TextResponsive(
-              '35 - 40Minutes',
-              style: TextStyle(
-                fontFamily: 'SofiaPro-Medium',
-                fontSize: 40.h,
-                color: const Color(0x80282828),
-                height: 1.5,
-              ),
-              textAlign: TextAlign.left,
-            ),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30.0),
-                color: const Color(0xffffffff),
-                boxShadow: [
-                  BoxShadow(
-                    color: const Color(0x0d130f10),
-                    offset: Offset(4, 6.928203105926514),
-                    blurRadius: 125,
-                  ),
-                ],
-              ),
+      child: SafeArea(
+        child: Scaffold(
+          body: SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.all(10.0),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      GestureDetector(
-                        child: TextResponsive(
-                          'Ingrediants',
+                  Container(
+                    height: 50,
+                    child: Row(
+                      children: <Widget>[
+                        SizedBox(
+                          width: 18,
+                        ),
+                        //Image.asset('Assets/filter/arrow.png'),
+                        Icon(Icons.arrow_back),
+                        SizedBox(
+                          width: 150,
+                        ),
+                        TextResponsive(
+                          'Recipe',
                           style: TextStyle(
                             fontFamily: 'SofiaPro-SemiBold',
                             fontSize: 50,
-                            color: const Color(0xffff718b),
-                            height: 1.2,
+                            color: Color(0xff130f10),
                           ),
-                          textAlign: TextAlign.left,
                         ),
-                        onTap: () {},
-                      ),
-                      GestureDetector(
-                        child: TextResponsive(
-                          'Method',
-                          style: TextStyle(
-                            fontFamily: 'SofiaPro-Medium',
-                            fontSize: 50,
-                            color: const Color(0x80130f10),
-                            height: 1.2,
+                      ],
+                    ),
+                  ),
+                  Divider(
+                    thickness: 2,
+                  ),
+                  Container(
+                    height: 450.h,
+                    child: Stack(
+                      children: <Widget>[
+                        Positioned(
+                          top: -5,
+                          left: 20,
+                          child: Image.asset(
+                            'Assets/recipe_details/Place Your Image Here.png',
+                            height: 454.h,
+                            width: 953.w,
                           ),
-                          textAlign: TextAlign.right,
                         ),
-                        onTap: () {},
+                        // Adobe XD layer: 'Place Your Image He…' (group)
+                        Positioned(
+                          top: -10,
+                          left: 840.w,
+                          child: Image.asset(
+                            'Assets/recipe_details/Place Your Image Here.png',
+                            height: 454.h,
+                            width: 953.w,
+                          ),
+                        ),
+                        Positioned(
+                          left: 30,
+                          child: Image.asset(
+                            'Assets/recipe_details/Place Your Image Here (Double Click to Edit)-1.png',
+                            height: 363.h,
+                            width: 888.w,
+                          ),
+                        ),
+                        Positioned(
+                          child: Image.asset(
+                              'Assets/recipe_details/Vector Smart Object (Double Click To Edit).png'),
+                        ),
+                        Positioned(
+                          top: -30,
+                          left: 100,
+                          child: Image.asset(
+                            'Assets/recipe_details/Place Your Image Here (Double Click to Edit).png',
+                            width: 145,
+                            height: 176,
+                          ),
+                        ),
+                        Align(
+                          child: Image.asset(
+                            'Assets/recipe_details/kisspng-pizza-margherita-bacon-delivery-cheese-pizza-menu-5b2597bcabaf52.8918615115291903327032.png',
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  Center(
+                    child: TextResponsive(
+                      'Tomotto pizza',
+                      style: TextStyle(
+                        fontFamily: 'SofiaPro-Bold',
+                        fontSize: 75,
+                        color: const Color(0xff130f10),
+                        height: 0.8,
                       ),
-                    ],
+                      textAlign: TextAlign.left,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Center(
+                    child: TextResponsive(
+                      '35 - 40Minutes',
+                      style: TextStyle(
+                        fontFamily: 'SofiaPro-Medium',
+                        fontSize: 40,
+                        color: const Color(0x80282828),
+                      ),
+                      textAlign: TextAlign.left,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    child: Column(
+                      children: <Widget>[
+                        Center(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: <Widget>[
+                              Container(
+                                width: 502.5.w,
+                                height: 157.h,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(30.0),
+                                  ),
+                                  color: Color(0xfffffafb),
+                                ),
+                                child: Center(
+                                  child: TextResponsive(
+                                    'Ingrediants',
+                                    style: TextStyle(
+                                      fontFamily: 'SofiaPro-SemiBold',
+                                      fontSize: 50,
+                                      color: const Color(0xffff718b),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                width: 502.5.w,
+                                height: 157.h,
+                                child: Center(
+                                  child: TextResponsive(
+                                    'Method',
+                                    style: TextStyle(
+                                      fontFamily: 'SofiaPro-SemiBold',
+                                      fontSize: 50,
+                                      color: Color(0xFF130F10),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Ing(
+                          color: Color(0xFF0FC535),
+                          data: '500g',
+                          string: 'Cornmeal',
+                        ),
+                        Ing(
+                          color: Color(0xFFE5E5E5),
+                          data: '300g',
+                          string: 'Flour',
+                        ),
+                        Ing(
+                          color: Color(0xFF0FC535),
+                          data: '1 lb.',
+                          string: 'Pizza dough',
+                        ),
+                        Ing(
+                          color: Color(0xFFE5E5E5),
+                          data: '1 lb.',
+                          string: 'Tomato Sauce',
+                        ),
+                        Ing(
+                          color: Color(0xFF0FC535),
+                          data: '3/4 c',
+                          string: 'Large tomatoes',
+                        ),
+                        Ing(
+                          color: Color(0xFF0FC535),
+                          data: '1/2',
+                          string: 'Small Red Onion',
+                        ),
+                        Ing(
+                          color: Color(0xFF0FC535),
+                          data: '4 oz.',
+                          string: 'Mozzarella',
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      // Adobe XD layer: 'checckmark_round.png' (shape)
-                      Container(
-                        width: 60.0,
-                        height: 60.0,
-                        decoration: BoxDecoration(
-                          borderRadius:
-                              BorderRadius.all(Radius.elliptical(30.0, 30.0)),
-                          border: Border.all(
-                              width: 2.0, color: const Color(0x33130f10)),
-                        ),
+                      CircleAvatar(
+                        backgroundColor: Colors.white,
+                        radius: 10,
+                      ),
+                      SizedBox(
+                        width: 20,
                       ),
                       TextResponsive(
                         'Keep track my leftovers',
@@ -147,29 +263,132 @@ class _RecipeState extends State<Recipe> {
                     ],
                   ),
                   // Adobe XD layer: 'Rectangle 7 copy 21' (shape)
-                  Container(
-                    width: 800.0,
-                    height: 140.0,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20.0),
-                      color: const Color(0xffff718b),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Center(
+                    child: Container(
+                      width: 800.w,
+                      height: 140.0.h,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.0),
+                        color: const Color(0xffff718b),
+                      ),
+                      child: Center(
+                        child: TextResponsive(
+                          'Add to menu',
+                          style: TextStyle(
+                            fontFamily: 'SofiaPro-SemiBold',
+                            fontSize: 45,
+                            color: const Color(0xffffffff),
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
                     ),
-                    child: Text(
-                      'Add to menu',
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Divider(
+                    thickness: 1,
+                  ),
+
+                  Padding(
+                    padding: EdgeInsets.all(20.0),
+                    child: TextResponsive(
+                      'Price Breakdown',
                       style: TextStyle(
                         fontFamily: 'SofiaPro-SemiBold',
-                        fontSize: 45,
-                        color: const Color(0xffffffff),
-                        height: 1.3333333333333333,
+                        fontSize: 55,
+                        color: const Color(0xff130f10),
                       ),
-                      textAlign: TextAlign.center,
+                      textAlign: TextAlign.left,
                     ),
+                  ),
+                  Container(
+                    child: Center(
+                        child: PieChart(
+                      dataMap: dataMap,
+                      animationDuration: Duration(milliseconds: 800),
+                      chartLegendSpacing: 32.0,
+                      chartRadius: MediaQuery.of(context).size.width / 2.7,
+                      showChartValuesInPercentage: true,
+                      showChartValues: true,
+                      showChartValuesOutside: true,
+                      chartValueBackgroundColor: Colors.white,
+                      colorList: colorList,
+                      showLegends: true,
+                      legendPosition: LegendPosition.right,
+                      decimalPlaces: 1,
+                      showChartValueLabel: true,
+                      initialAngle: 0,
+                      chartValueStyle: defaultChartValueStyle.copyWith(
+                        color: Colors.blueGrey[900].withOpacity(0.9),
+                      ),
+                      chartType: ChartType.ring,
+                    )),
                   ),
                 ],
               ),
             ),
-          ],
+          ),
         ),
+      ),
+    );
+  }
+}
+
+class Ing extends StatelessWidget {
+  final Color color;
+  final String string;
+  final String data;
+  Ing({this.string, this.color, this.data});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.all(20.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Row(
+            children: <Widget>[
+              // Adobe XD layer: 'Rectangle 9' (shape)
+              Container(
+                width: 25.0.h,
+                height: 25.0.h,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.elliptical(12.5, 12.5)),
+                  color: color,
+                ),
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              TextResponsive(
+                string,
+                style: TextStyle(
+                  fontFamily: 'SofiaPro',
+                  fontSize: 45,
+                  color: const Color(0xff130f10),
+                  height: 1.3333333333333333,
+                ),
+                textAlign: TextAlign.left,
+              ),
+            ],
+          ),
+          TextResponsive(
+            data,
+            style: TextStyle(
+              fontFamily: 'SofiaPro-Medium',
+              fontSize: 45,
+              color: const Color(0xcc130f10),
+              height: 1.3333333333333333,
+            ),
+            textAlign: TextAlign.left,
+          ),
+        ],
       ),
     );
   }
