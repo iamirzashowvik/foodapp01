@@ -44,35 +44,6 @@ class Planned_mealv2_card extends StatelessWidget {
                 // height: 100,
               ),
               Positioned(
-                top: 10,
-                right: 10,
-                child: Column(
-                  children: <Widget>[
-                    GestureDetector(
-                      child: CircleAvatar(
-                        backgroundColor: Colors.white,
-                        child: Icon(
-                          Icons.delete,
-                          color: Colors.red,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    GestureDetector(
-                      child: CircleAvatar(
-                        backgroundColor: Colors.white,
-                        child: Icon(
-                          Icons.check,
-                          color: Colors.green,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Positioned(
                 left: 0,
                 bottom: 0,
                 child: Row(
@@ -200,10 +171,10 @@ class Planned_mealv2_card extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               Container(
-                width: 430.0.w,
-                height: 120.0.h,
+                width: 280.0.w,
+                height: 80.0.h,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15.0),
+                  borderRadius: BorderRadius.circular(8.0),
                   color: Color(0x80d9f1f4),
                   border: Border.all(width: 1.0, color: Color(0x809df4fa)),
                 ),
@@ -212,17 +183,17 @@ class Planned_mealv2_card extends StatelessWidget {
                     '$loScore% leftover score',
                     style: TextStyle(
                       fontFamily: 'SofiaPro-Medium',
-                      fontSize: 40,
+                      fontSize: 27,
                       color: Color(0xff55ccd4),
                     ),
                   ),
                 ),
               ),
               Container(
-                width: 430.0.w,
-                height: 120.0.h,
+                width: 280.0.w,
+                height: 80.0.h,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15.0),
+                  borderRadius: BorderRadius.circular(8.0),
                   color: const Color(0x80d9f1f4),
                   border:
                       Border.all(width: 1.0, color: const Color(0x809df4fa)),
@@ -232,7 +203,7 @@ class Planned_mealv2_card extends StatelessWidget {
                     '$hlthScore% Health score',
                     style: TextStyle(
                       fontFamily: 'SofiaPro-Medium',
-                      fontSize: 40,
+                      fontSize: 27,
                       color: Color(0xff55ccd4),
                     ),
                   ),

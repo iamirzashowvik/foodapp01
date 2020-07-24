@@ -10,169 +10,183 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: TextResponsive(
-          'Home',
-          style: TextStyle(
-            fontFamily: 'SofiaPro-Bold',
-            fontSize: 80,
-            color: const Color(0xff130f10),
-          ),
-          textAlign: TextAlign.left,
-        ),
-        actions: <Widget>[
-          Container(
-            width: 110.0.h,
-            height: 110.0.h,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.elliptical(55.0, 55.0)),
-              color: const Color(0x1aff718b),
-            ),
-            child: Container(
-              width: 38.0.h,
-              height: 38.0.h,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('Assets/home/filter.png.png'),
-                  fit: BoxFit.fill,
+    return SafeArea(
+      child: Scaffold(
+        body: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: SizedBox(
+            height: 3000,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.all(20.0),
+                  child: Container(
+                    height: 50,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        TextResponsive(
+                          'Home',
+                          style: TextStyle(
+                            fontFamily: 'SofiaPro-SemiBold',
+                            fontSize: 50,
+                            color: const Color(0xff130f10),
+                          ),
+                        ),
+                        CircleAvatar(
+                            radius: 55.h,
+                            backgroundColor: Color(0x1aff718b),
+                            child: Image.asset(
+                              'Assets/home/filter.png.png',
+                              height: 38.h,
+                              width: 38.h,
+                            )),
+                      ],
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ),
-        ],
-      ),
-      body: Column(
-        children: <Widget>[
-          Container(
-            // width: 1005.0,
-            // height: 130.0,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20.0),
-              color: const Color(0xffffffff),
-              boxShadow: [
-                BoxShadow(
-                  color: Color(0x0d130f10),
-                  offset: Offset(4, 6.928203105926514),
-                  blurRadius: 125,
+                Divider(
+                  thickness: 2,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Padding(
+                  padding: EdgeInsets.all(20.0),
+                  child: Container(
+                    // width: 1005.0,
+                    // height: 130.0,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                      color: const Color(0xffffffff),
+                    ),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        hintText: ' Search for recipe',
+                        prefixIcon: Center(child: Icon(Icons.search)),
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  height: 250.h,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 4,
+                    itemBuilder: (BuildContext context, int index) {
+                      return GestureDetector(
+                        child: HomeIcon(
+                          title: "sometitle",
+                          icon: 'Assets/home/healthy.png.png',
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(20.0),
+                  child: TextResponsive(
+                    'Max 15 min total time ',
+                    style: TextStyle(
+                      fontFamily: 'SofiaPro-SemiBold',
+                      fontSize: 50,
+                      color: const Color(0xff130f10),
+                    ),
+                    textAlign: TextAlign.left,
+                  ),
+                ),
+                Expanded(
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 5,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Container(
+                          height: 872.h,
+                          width: 673.w,
+                          child: Planned_mealv2_card(
+                            path:
+                                'Assets/pmv2/1501791674-delish-chicken-curry-horizontal copy.png',
+                            name: 'Mwxican rice with meat',
+                            star: 5,
+                            price: 35,
+                            steps: 5,
+                            intgrediants: 12,
+                            cost: 10,
+                            loScore: 23,
+                            hlthScore: 43,
+                            isRemove: false,
+                          ),
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ],
             ),
-            child: TextField(
-              decoration: InputDecoration(
-                prefixIcon: Icon(Icons.search),
+          ),
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.home,
+              ),
+              title: TextResponsive(
+                'Home',
+                style: TextStyle(
+                  fontFamily: 'SofiaPro-Medium',
+                  fontSize: 35,
+                  color: const Color(0x4d130f10),
+                ),
               ),
             ),
-          ),
-          Container(
-            height: 250.h,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: 4,
-              itemBuilder: (BuildContext context, int index) {
-                return GestureDetector(
-                  child: HomeIcon(
-                    title: "sometitle",
-                    icon: 'Assets/home/healthy.png.png',
-                  ),
-                );
-              },
-            ),
-          ),
-          TextResponsive(
-            'Max 15 min total time ',
-            style: TextStyle(
-              fontFamily: 'SofiaPro-SemiBold',
-              fontSize: 50,
-              color: const Color(0xff130f10),
-            ),
-            textAlign: TextAlign.left,
-          ),
-          Expanded(
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: 2,
-              itemBuilder: (BuildContext context, int index) {
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Planned_mealv2_card(
-                    path:
-                        'Assets/pmv2/1501791674-delish-chicken-curry-horizontal copy.png',
-                    name: 'Mwxican rice with meat',
-                    star: 5,
-                    price: 35,
-                    steps: 5,
-                    intgrediants: 12,
-                    cost: 10,
-                    loScore: 23,
-                    hlthScore: 43,
-                    isRemove: false,
-                  ),
-                );
-              },
-            ),
-          ),
-        ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-            ),
-            title: TextResponsive(
-              'Home',
-              style: TextStyle(
-                fontFamily: 'SofiaPro-Medium',
-                fontSize: 35,
-                color: const Color(0x4d130f10),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.search,
+              ),
+              title: TextResponsive(
+                'Search',
+                style: TextStyle(
+                  fontFamily: 'SofiaPro-Medium',
+                  fontSize: 35,
+                  color: const Color(0x4d130f10),
+                ),
+                textAlign: TextAlign.left,
               ),
             ),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.search,
-            ),
-            title: TextResponsive(
-              'Search',
-              style: TextStyle(
-                fontFamily: 'SofiaPro-Medium',
-                fontSize: 35,
-                color: const Color(0x4d130f10),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.reorder,
               ),
-              textAlign: TextAlign.left,
-            ),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.reorder,
-            ),
-            title: TextResponsive(
-              'Orders',
-              style: TextStyle(
-                fontFamily: 'SofiaPro-Medium',
-                fontSize: 35,
-                color: const Color(0x4d130f10),
+              title: TextResponsive(
+                'Orders',
+                style: TextStyle(
+                  fontFamily: 'SofiaPro-Medium',
+                  fontSize: 35,
+                  color: const Color(0x4d130f10),
+                ),
+                textAlign: TextAlign.left,
               ),
-              textAlign: TextAlign.left,
             ),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.account_box,
-            ),
-            title: TextResponsive(
-              'Profiles',
-              style: TextStyle(
-                fontFamily: 'SofiaPro-Medium',
-                fontSize: 35,
-                color: const Color(0x4d130f10),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.account_box,
               ),
-              textAlign: TextAlign.left,
+              title: TextResponsive(
+                'Profiles',
+                style: TextStyle(
+                  fontFamily: 'SofiaPro-Medium',
+                  fontSize: 35,
+                  color: const Color(0x4d130f10),
+                ),
+                textAlign: TextAlign.left,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
