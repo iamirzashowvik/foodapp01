@@ -129,6 +129,8 @@ class _HomeState extends State<Home> {
           ),
         ),
         bottomNavigationBar: BottomNavigationBar(
+          selectedItemColor: Color(0xffff7118b),
+          unselectedItemColor: Color(0xff707070),
           items: [
             BottomNavigationBarItem(
               icon: Icon(
@@ -139,7 +141,7 @@ class _HomeState extends State<Home> {
                 style: TextStyle(
                   fontFamily: 'SofiaPro-Medium',
                   fontSize: 35,
-                  color: const Color(0x4d130f10),
+                  //  color: const Color(0x4d130f10),
                 ),
               ),
             ),
@@ -152,9 +154,8 @@ class _HomeState extends State<Home> {
                 style: TextStyle(
                   fontFamily: 'SofiaPro-Medium',
                   fontSize: 35,
-                  color: const Color(0x4d130f10),
+                  //   color: const Color(0x4d130f10),
                 ),
-                textAlign: TextAlign.left,
               ),
             ),
             BottomNavigationBarItem(
@@ -166,7 +167,7 @@ class _HomeState extends State<Home> {
                 style: TextStyle(
                   fontFamily: 'SofiaPro-Medium',
                   fontSize: 35,
-                  color: const Color(0x4d130f10),
+                  //   color: const Color(0x4d130f10),
                 ),
                 textAlign: TextAlign.left,
               ),
@@ -180,9 +181,8 @@ class _HomeState extends State<Home> {
                 style: TextStyle(
                   fontFamily: 'SofiaPro-Medium',
                   fontSize: 35,
-                  color: const Color(0x4d130f10),
+                  //    color: const Color(0x4d130f10),
                 ),
-                textAlign: TextAlign.left,
               ),
             ),
           ],
