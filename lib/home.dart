@@ -59,12 +59,12 @@ class _HomeState extends State<Home> {
                     // height: 130.0,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10.0),
-                      color: const Color(0xffffffff),
+                      //   color: const Color(0xffffffff),
                     ),
                     child: TextField(
                       decoration: InputDecoration(
                         hintText: ' Search for recipe',
-                        prefixIcon: Center(child: Icon(Icons.search)),
+                        prefixIcon: Icon(Icons.search),
                       ),
                     ),
                   ),
