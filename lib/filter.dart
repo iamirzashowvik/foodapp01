@@ -173,14 +173,7 @@ class _Filter_2State extends State<Filter_2> {
                         child: ListView(
                           scrollDirection: Axis.horizontal,
                           children: <Widget>[
-                            GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    dc = ac;
-                                  });
-                                },
-                                child:
-                                    Diet_card(name: 'Vegetarian', color: dc)),
+                            Diet_card(name: 'Vegetarian', color: dc),
                             Diet_card(name: 'Vegan', color: dc),
                             Diet_card(name: 'Paleo', color: dc),
                           ],
@@ -356,34 +349,42 @@ class Diet_card extends StatefulWidget {
 }
 
 class _Diet_cardState extends State<Diet_card> {
+  bool isSelect = false;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(5.0),
-      child: Container(
-        width: 300.0.w,
-        height: 120.0.h,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15.0),
-          color: widget.color,
-          boxShadow: [
-            BoxShadow(
-              color: const Color(0x0d130f10),
-              offset: Offset(4, 6.928203105926514),
-              blurRadius: 18,
+    return InkWell(
+      onTap: () {
+        setState(() {
+          isSelect = !isSelect;
+        });
+        print(isSelect);
+      },
+      child: Padding(
+        padding: EdgeInsets.all(5.0),
+        child: Container(
+          width: 300.0.w,
+          height: 120.0.h,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15.0),
+            color: widget.color,
+            boxShadow: [
+              BoxShadow(
+                color: const Color(0x0d130f10),
+                offset: Offset(4, 6.928203105926514),
+                blurRadius: 18,
+              ),
+            ],
+          ),
+          child: Center(
+            child: TextResponsive(
+              widget.name,
+              style: TextStyle(
+                fontFamily: 'SofiaPro',
+                fontSize: 40,
+                color: (isSelect) ? Colors.black : Colors.white,
+              ),
+              textAlign: TextAlign.center,
             ),
-          ],
-        ),
-        child: Center(
-          child: TextResponsive(
-            widget.name,
-            style: TextStyle(
-              fontFamily: 'SofiaPro',
-              fontSize: 40,
-              color:
-                  (widget.color == Colors.white) ? Colors.black : Colors.white,
-            ),
-            textAlign: TextAlign.center,
           ),
         ),
       ),
