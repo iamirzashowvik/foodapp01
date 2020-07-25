@@ -350,6 +350,7 @@ class Diet_card extends StatefulWidget {
 
 class _Diet_cardState extends State<Diet_card> {
   bool isSelect = false;
+  Color _color = Color(0xFFFE718B);
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -366,7 +367,7 @@ class _Diet_cardState extends State<Diet_card> {
           height: 120.0.h,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15.0),
-            color: widget.color,
+            color: (isSelect) ? _color : Colors.white,
             boxShadow: [
               BoxShadow(
                 color: const Color(0x0d130f10),
@@ -381,7 +382,7 @@ class _Diet_cardState extends State<Diet_card> {
               style: TextStyle(
                 fontFamily: 'SofiaPro',
                 fontSize: 40,
-                color: (isSelect) ? Colors.black : Colors.white,
+                color: (isSelect) ? Colors.white : Colors.black,
               ),
               textAlign: TextAlign.center,
             ),
