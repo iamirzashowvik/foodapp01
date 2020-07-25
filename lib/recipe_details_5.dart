@@ -13,6 +13,9 @@ class Recipe extends StatefulWidget {
 
 class _RecipeState extends State<Recipe> {
   bool toggle = false;
+  Color selectedColor1 = Color(0xffff718b);
+  Color selectedColor2 = Colors.black;
+  Color cc = Color(0xffff718b);
   Map<String, double> dataMap = Map();
   List<Color> colorList = [
     Color(0xFFFFBD4B),
@@ -39,38 +42,31 @@ class _RecipeState extends State<Recipe> {
       allowFontScaling: true,
       child: SafeArea(
         child: Scaffold(
+          appBar: AppBar(
+            elevation: 0,
+            backgroundColor: Colors.white,
+            leading: Icon(
+              Icons.arrow_back,
+              color: Colors.black,
+            ),
+            title: Center(
+              child: TextResponsive(
+                'Recipe',
+                style: TextStyle(
+                  fontFamily: 'SofiaPro-SemiBold',
+                  fontSize: 50,
+                  color: Color(0xff130f10),
+                ),
+              ),
+            ),
+          ),
           body: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
             child: Padding(
               padding: EdgeInsets.all(10.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Container(
-                    height: 50,
-                    child: Row(
-                      children: <Widget>[
-                        SizedBox(
-                          width: 18,
-                        ),
-                        //Image.asset('Assets/filter/arrow.png'),
-                        Icon(Icons.arrow_back),
-                        SizedBox(
-                          width: 150,
-                        ),
-                        TextResponsive(
-                          'Recipe',
-                          style: TextStyle(
-                            fontFamily: 'SofiaPro-SemiBold',
-                            fontSize: 50,
-                            color: Color(0xff130f10),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Divider(
-                    thickness: 2,
-                  ),
                   Container(
                     height: 450.h,
                     child: Stack(
@@ -155,14 +151,15 @@ class _RecipeState extends State<Recipe> {
                   SizedBox(
                     height: 20,
                   ),
-                  Container(
+                  DefaultTabController(
+                    // The number of tabs / content sections to display.
+                    length: 2,
                     child: Column(
                       children: <Widget>[
-                        Center(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: <Widget>[
-                              Container(
+                        TabBar(
+                          tabs: [
+                            Tab(
+                              child: Container(
                                 width: 502.5.w,
                                 height: 157.h,
                                 decoration: BoxDecoration(
@@ -177,12 +174,14 @@ class _RecipeState extends State<Recipe> {
                                     style: TextStyle(
                                       fontFamily: 'SofiaPro-SemiBold',
                                       fontSize: 50,
-                                      color: const Color(0xffff718b),
+                                      color: selectedColor1,
                                     ),
                                   ),
                                 ),
                               ),
-                              Container(
+                            ),
+                            Tab(
+                              child: Container(
                                 width: 502.5.w,
                                 height: 157.h,
                                 child: Center(
@@ -191,52 +190,93 @@ class _RecipeState extends State<Recipe> {
                                     style: TextStyle(
                                       fontFamily: 'SofiaPro-SemiBold',
                                       fontSize: 50,
-                                      color: Color(0xFF130F10),
+                                      color: selectedColor2,
                                     ),
                                   ),
                                 ),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                        Ing(
-                          color: Color(0xFF0FC535),
-                          data: '500g',
-                          string: 'Cornmeal',
-                        ),
-                        Ing(
-                          color: Color(0xFFE5E5E5),
-                          data: '300g',
-                          string: 'Flour',
-                        ),
-                        Ing(
-                          color: Color(0xFF0FC535),
-                          data: '1 lb.',
-                          string: 'Pizza dough',
-                        ),
-                        Ing(
-                          color: Color(0xFFE5E5E5),
-                          data: '1 lb.',
-                          string: 'Tomato Sauce',
-                        ),
-                        Ing(
-                          color: Color(0xFF0FC535),
-                          data: '3/4 c',
-                          string: 'Large tomatoes',
-                        ),
-                        Ing(
-                          color: Color(0xFF0FC535),
-                          data: '1/2',
-                          string: 'Small Red Onion',
-                        ),
-                        Ing(
-                          color: Color(0xFF0FC535),
-                          data: '4 oz.',
-                          string: 'Mozzarella',
-                        ),
+                        //   Expanded(
+                        //  child: TabBarView(
+                        //    children: [
+//                              Container(
+//                                width: 700,
+//                                height: 700,
+//                                child: Column(
+//                                  children: <Widget>[
+//                                    Ing(
+//                                      color: Color(0xFF0FC535),
+//                                      data: '500g',
+//                                      string: 'Cornmeal',
+//                                    ),
+//                                    Ing(
+//                                      color: Color(0xFFE5E5E5),
+//                                      data: '300g',
+//                                      string: 'Flour',
+//                                    ),
+//                                    Ing(
+//                                      color: Color(0xFF0FC535),
+//                                      data: '1 lb.',
+//                                      string: 'Pizza dough',
+//                                    ),
+//                                    Ing(
+//                                      color: Color(0xFFE5E5E5),
+//                                      data: '1 lb.',
+//                                      string: 'Tomato Sauce',
+//                                    ),
+//                                    Ing(
+//                                      color: Color(0xFF0FC535),
+//                                      data: '3/4 c',
+//                                      string: 'Large tomatoes',
+//                                    ),
+//                                    Ing(
+//                                      color: Color(0xFF0FC535),
+//                                      data: '1/2',
+//                                      string: 'Small Red Onion',
+//                                    ),
+//                                    Ing(
+//                                      color: Color(0xFF0FC535),
+//                                      data: '4 oz.',
+//                                      string: 'Mozzarella',
+//                                    ),
+//                                  ],
+//                                ),
+//                              ),
+//                              Container(
+//                                child: Column(
+//                                  children: <Widget>[
+//                                    TextResponsive(
+//                                      'hi',
+//                                      style: TextStyle(
+//                                        fontFamily: 'SofiaPro-Light',
+//                                        fontSize: 40,
+//                                        color: const Color(0xb3130f10),
+//                                        height: 1.5,
+//                                      ),
+//                                      textAlign: TextAlign.left,
+//                                    ),
+//                                    TextResponsive(
+//                                      'hello',
+//                                      style: TextStyle(
+//                                        fontFamily: 'SofiaPro-Light',
+//                                        fontSize: 40,
+//                                        color: const Color(0xb3130f10),
+//                                        height: 1.5,
+//                                      ),
+//                                      textAlign: TextAlign.left,
+//                                    ),
+//                                  ],
+//                                ),
+//                              ),
+                        // ],
+                        //   ),
+                        // ),
                       ],
-                    ),
+                    ), // Complete this code in the next step.
                   ),
+
                   SizedBox(
                     height: 10,
                   ),

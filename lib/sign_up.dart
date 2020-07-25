@@ -16,138 +16,136 @@ class SignUp extends StatelessWidget {
       width: 1080, // Optional
       allowFontScaling: true, // Optional(
       child: Scaffold(
-        body: SafeArea(
-          child: Center(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  child: Flexible(
-                    child: Stack(
+        body: Center(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                child: Flexible(
+                  child: Stack(
+                    children: <Widget>[
+                      Positioned(
+                        top: -362.h,
+                        left: 40.w,
+                        child: Image.asset(
+                          'Assets/signUp/main.png',
+                          height: 881.h,
+                          width: 888.w,
+                        ),
+                      ),
+                      Positioned(
+                        top: -100.06.h,
+                        left: 780.62.w,
+                        child: Image.asset(
+                          'Assets/signUp/mainleft.png',
+                          height: 408.h,
+                          width: 858.w,
+                        ),
+                      ),
+                      Positioned(
+                        top: -50.06.h,
+                        left: -25,
+                        child: Image.asset(
+                          'Assets/signUp/mainleft.png',
+                          height: 450.h,
+                          width: 858.w,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+//                SizedBox(
+//                  height: 25,
+//                ),
+              Image(
+                height: 200.h,
+                width: 200.w,
+                image: AssetImage('Assets/signUp/grow-shop.png'),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              TextResponsive(
+                'Sign Up',
+                style: TextStyle(
+                  fontFamily: 'SofiaPro-Bold',
+                  fontSize: 70,
+                  color: const Color(0xff100603),
+                ),
+              ),
+              // Adobe XD layer: 'Rectangle 2 copy 5' (shape)
+              SizedBox(
+                height: 20,
+              ),
+              Signupbutton(
+                color: Color(0xFF3B5998),
+                text: 'Sign up with Facebook',
+                path: 'Assets/signUp/facebook.png',
+              ),
+
+              Signupbutton(
+                color: Color(0xFFEA4235),
+                text: 'Sign up with Google',
+                path: 'Assets/signUp/Google.png.png',
+              ),
+              Signupbutton(
+                color: Color(0xFF00ACEE),
+                text: 'Sign up with Twitter',
+                path: 'Assets/signUp/twitter.png.png',
+              ),
+              SizedBox(
+                height: 50,
+              ),
+              Stack(
+                children: <Widget>[
+                  Align(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Positioned(
-                          top: -362.h,
-                          left: 40.w,
-                          child: Image.asset(
-                            'Assets/signUp/main.png',
-                            height: 881.h,
-                            width: 888.w,
-                          ),
+                        SizedBox(
+                          height: 50,
                         ),
-                        Positioned(
-                          top: -100.06.h,
-                          left: 780.62.w,
-                          child: Image.asset(
-                            'Assets/signUp/mainleft.png',
-                            height: 408.h,
-                            width: 858.w,
+                        TextResponsive(
+                          'Already have an acount ?',
+                          style: TextStyle(
+                            fontFamily: 'SofiaPro-Medium',
+                            fontSize: 40,
+                            color: const Color(0xff130f10),
                           ),
+                          textAlign: TextAlign.left,
                         ),
-                        Positioned(
-                          top: -50.06.h,
-                          left: -25,
-                          child: Image.asset(
-                            'Assets/signUp/mainleft.png',
-                            height: 450.h,
-                            width: 858.w,
+                        TextResponsive(
+                          'Sign in',
+                          style: TextStyle(
+                            fontFamily: 'SofiaPro-Medium',
+                            fontSize: 45,
+                            color: const Color(0xffff718b),
                           ),
+                          textAlign: TextAlign.left,
                         ),
                       ],
                     ),
                   ),
-                ),
-//                SizedBox(
-//                  height: 25,
-//                ),
-                Image(
-                  height: 200.h,
-                  width: 200.w,
-                  image: AssetImage('Assets/signUp/grow-shop.png'),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                TextResponsive(
-                  'Sign Up',
-                  style: TextStyle(
-                    fontFamily: 'SofiaPro-Bold',
-                    fontSize: 70,
-                    color: const Color(0xff100603),
+                  Positioned(
+                    child: Image.asset(
+                      'Assets/signUp/Place Your Image Here-3.png',
+                      height: 361.h,
+                      width: 147.w,
+                    ),
                   ),
-                ),
-                // Adobe XD layer: 'Rectangle 2 copy 5' (shape)
-                SizedBox(
-                  height: 20,
-                ),
-                Signupbutton(
-                  color: Color(0xFF3B5998),
-                  text: 'Sign up with Facebook',
-                  path: 'Assets/signUp/facebook.png',
-                ),
-
-                Signupbutton(
-                  color: Color(0xFFEA4235),
-                  text: 'Sign up with Google',
-                  path: 'Assets/signUp/Google.png.png',
-                ),
-                Signupbutton(
-                  color: Color(0xFF00ACEE),
-                  text: 'Sign up with Twitter',
-                  path: 'Assets/signUp/twitter.png.png',
-                ),
-                SizedBox(
-                  height: 50,
-                ),
-                Stack(
-                  children: <Widget>[
-                    Align(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          SizedBox(
-                            height: 50,
-                          ),
-                          TextResponsive(
-                            'Already have an acount ?',
-                            style: TextStyle(
-                              fontFamily: 'SofiaPro-Medium',
-                              fontSize: 40,
-                              color: const Color(0xff130f10),
-                            ),
-                            textAlign: TextAlign.left,
-                          ),
-                          TextResponsive(
-                            'Sign in',
-                            style: TextStyle(
-                              fontFamily: 'SofiaPro-Medium',
-                              fontSize: 45,
-                              color: const Color(0xffff718b),
-                            ),
-                            textAlign: TextAlign.left,
-                          ),
-                        ],
-                      ),
+                  Positioned(
+                    right: 0,
+                    bottom: 0,
+                    child: Image.asset(
+                      'Assets/signUp/Place Your Image Here-3.png',
+                      height: 361.h,
+                      width: 147.w,
                     ),
-                    Positioned(
-                      child: Image.asset(
-                        'Assets/signUp/Place Your Image Here-3.png',
-                        height: 361.h,
-                        width: 147.w,
-                      ),
-                    ),
-                    Positioned(
-                      right: 0,
-                      bottom: 0,
-                      child: Image.asset(
-                        'Assets/signUp/Place Your Image Here-3.png',
-                        height: 361.h,
-                        width: 147.w,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),

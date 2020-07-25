@@ -9,6 +9,7 @@ class Filter_2 extends StatefulWidget {
 
 class _Filter_2State extends State<Filter_2> {
   int slidervalue = 6;
+
   @override
   Widget build(BuildContext context) {
     ResponsiveWidgets.init(
@@ -17,6 +18,9 @@ class _Filter_2State extends State<Filter_2> {
       width: 1080, // Optional
       allowFontScaling: true, // Optional
     );
+    Color bc = Colors.black;
+    Color dc = Colors.white;
+    Color ac = Color(0xFFFE718B);
     return ResponsiveWidgets.builder(
       height: 1920, // Optional
       width: 1080, // Optional
@@ -169,10 +173,16 @@ class _Filter_2State extends State<Filter_2> {
                         child: ListView(
                           scrollDirection: Axis.horizontal,
                           children: <Widget>[
-                            Diet_card(
-                                name: 'Vegetarian', color: Color(0xFFFE718B)),
-                            Diet_card(name: 'Vegan', color: Color(0xFFFE718B)),
-                            Diet_card(name: 'Paleo', color: Colors.white),
+                            GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    dc = ac;
+                                  });
+                                },
+                                child:
+                                    Diet_card(name: 'Vegetarian', color: dc)),
+                            Diet_card(name: 'Vegan', color: dc),
+                            Diet_card(name: 'Paleo', color: dc),
                           ],
                         ),
                       ),
@@ -196,12 +206,16 @@ class _Filter_2State extends State<Filter_2> {
                         child: ListView(
                           scrollDirection: Axis.horizontal,
                           children: <Widget>[
-                            Diet_card(name: 'Dairy', color: Color(0xFFFE718B)),
+                            GestureDetector(
+                                child: Diet_card(name: 'Dairy', color: dc)),
                             Diet_card(
                               name: 'Egg',
-                              color: Colors.white,
+                              color: dc,
                             ),
-                            Diet_card(name: 'Gluten', color: Color(0xFFFE718B)),
+                            Diet_card(
+                              name: 'Gluten',
+                              color: dc,
+                            ),
                           ],
                         ),
                       ),
@@ -366,9 +380,8 @@ class _Diet_cardState extends State<Diet_card> {
             style: TextStyle(
               fontFamily: 'SofiaPro',
               fontSize: 40,
-              color: (widget.color == Color(0xfffe718b))
-                  ? Colors.white
-                  : Colors.black,
+              color:
+                  (widget.color == Colors.white) ? Colors.black : Colors.white,
             ),
             textAlign: TextAlign.center,
           ),
