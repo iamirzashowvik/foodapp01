@@ -8,6 +8,18 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  int _selectedIndex = 0;
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  static const TextStyle optionStyle = TextStyle(
+    fontFamily: 'SofiaPro-Medium',
+    fontSize: 35,
+    //  color: const Color(0x4d130f10),
+  );
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -131,18 +143,16 @@ class _HomeState extends State<Home> {
         bottomNavigationBar: BottomNavigationBar(
           selectedItemColor: Color(0xffff7118b),
           unselectedItemColor: Color(0xff707070),
-          items: [
+          currentIndex: _selectedIndex,
+          onTap: _onItemTapped,
+          items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.home,
               ),
               title: TextResponsive(
                 'Home',
-                style: TextStyle(
-                  fontFamily: 'SofiaPro-Medium',
-                  fontSize: 35,
-                  //  color: const Color(0x4d130f10),
-                ),
+                style: optionStyle,
               ),
             ),
             BottomNavigationBarItem(
@@ -151,24 +161,16 @@ class _HomeState extends State<Home> {
               ),
               title: TextResponsive(
                 'Search',
-                style: TextStyle(
-                  fontFamily: 'SofiaPro-Medium',
-                  fontSize: 35,
-                  //   color: const Color(0x4d130f10),
-                ),
+                style: optionStyle,
               ),
             ),
             BottomNavigationBarItem(
               icon: Icon(
-                Icons.reorder,
+                Icons.receipt,
               ),
               title: TextResponsive(
                 'Orders',
-                style: TextStyle(
-                  fontFamily: 'SofiaPro-Medium',
-                  fontSize: 35,
-                  //   color: const Color(0x4d130f10),
-                ),
+                style: optionStyle,
                 textAlign: TextAlign.left,
               ),
             ),
@@ -178,11 +180,7 @@ class _HomeState extends State<Home> {
               ),
               title: TextResponsive(
                 'Profiles',
-                style: TextStyle(
-                  fontFamily: 'SofiaPro-Medium',
-                  fontSize: 35,
-                  //    color: const Color(0x4d130f10),
-                ),
+                style: optionStyle,
               ),
             ),
           ],

@@ -2,7 +2,26 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_widgets/responsive_widgets.dart';
 
-class Plannedmeal1 extends StatelessWidget {
+class Plannedmeal1 extends StatefulWidget {
+  static const TextStyle optionStyle = TextStyle(
+    fontFamily: 'SofiaPro-Medium',
+    fontSize: 35,
+    //  color: const Color(0x4d130f10),
+  );
+
+  @override
+  _Plannedmeal1State createState() => _Plannedmeal1State();
+}
+
+class _Plannedmeal1State extends State<Plannedmeal1> {
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     ResponsiveWidgets.init(
@@ -28,7 +47,7 @@ class Plannedmeal1 extends StatelessWidget {
                       style: TextStyle(
                         fontFamily: 'SofiaPro-SemiBold',
                         fontSize: 50,
-                        color: const Color(0xff130f10),
+                        color: Color(0xff130f10),
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -56,64 +75,46 @@ class Plannedmeal1 extends StatelessWidget {
             ),
           ),
           bottomNavigationBar: BottomNavigationBar(
-            items: [
+            selectedItemColor: Color(0xffff7118b),
+            unselectedItemColor: Color(0xff707070),
+            currentIndex: _selectedIndex,
+            onTap: _onItemTapped,
+            items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.home,
-                  color: const Color(0xFF707070),
                 ),
                 title: TextResponsive(
                   'Home',
-                  style: TextStyle(
-                    fontFamily: 'SofiaPro-Medium',
-                    fontSize: 35,
-                    color: const Color(0xFF707070),
-                  ),
-                  textAlign: TextAlign.left,
+                  style: Plannedmeal1.optionStyle,
                 ),
               ),
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.search,
-                  color: Color(0xFFFF718B),
                 ),
                 title: TextResponsive(
                   'Search',
-                  style: TextStyle(
-                    fontFamily: 'SofiaPro-Medium',
-                    fontSize: 35,
-                    color: Color(0xFFFF718B),
-                  ),
+                  style: Plannedmeal1.optionStyle,
                 ),
               ),
               BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.reorder,
-                  color: const Color(0xFF707070),
+                  Icons.receipt,
                 ),
                 title: TextResponsive(
                   'Orders',
-                  style: TextStyle(
-                    fontFamily: 'SofiaPro-Medium',
-                    fontSize: 35,
-                    color: const Color(0xFF707070),
-                  ),
+                  style: Plannedmeal1.optionStyle,
                   textAlign: TextAlign.left,
                 ),
               ),
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.account_box,
-                  color: const Color(0xFF707070),
                 ),
                 title: TextResponsive(
                   'Profiles',
-                  style: TextStyle(
-                    fontFamily: 'SofiaPro-Medium',
-                    fontSize: 35,
-                    color: const Color(0xFF707070),
-                  ),
-                  textAlign: TextAlign.left,
+                  style: Plannedmeal1.optionStyle,
                 ),
               ),
             ],

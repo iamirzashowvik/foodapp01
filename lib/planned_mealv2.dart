@@ -2,7 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:project01withsauiux/widgets/reusablecard.dart';
 import 'package:responsive_widgets/responsive_widgets.dart';
 
-class Plannedmeal extends StatelessWidget {
+class Plannedmeal extends StatefulWidget {
+  @override
+  _PlannedmealState createState() => _PlannedmealState();
+}
+
+class _PlannedmealState extends State<Plannedmeal> {
+  int _selectedIndex = 0;
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  static const TextStyle optionStyle = TextStyle(
+    fontFamily: 'SofiaPro-Medium',
+    fontSize: 35,
+    //  color: const Color(0x4d130f10),
+  );
   @override
   Widget build(BuildContext context) {
     ResponsiveWidgets.init(
@@ -57,64 +74,46 @@ class Plannedmeal extends StatelessWidget {
             ),
           ),
           bottomNavigationBar: BottomNavigationBar(
-            items: [
+            selectedItemColor: Color(0xffff7118b),
+            unselectedItemColor: Color(0xff707070),
+            currentIndex: _selectedIndex,
+            onTap: _onItemTapped,
+            items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.home,
-                  color: const Color(0xFF707070),
                 ),
                 title: TextResponsive(
                   'Home',
-                  style: TextStyle(
-                    fontFamily: 'SofiaPro-Medium',
-                    fontSize: 35,
-                    color: const Color(0xFF707070),
-                  ),
-                  textAlign: TextAlign.left,
+                  style: optionStyle,
                 ),
               ),
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.search,
-                  color: Color(0xFFFF718B),
                 ),
                 title: TextResponsive(
                   'Search',
-                  style: TextStyle(
-                    fontFamily: 'SofiaPro-Medium',
-                    fontSize: 35,
-                    color: Color(0xFFFF718B),
-                  ),
+                  style: optionStyle,
                 ),
               ),
               BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.reorder,
-                  color: const Color(0xFF707070),
+                  Icons.receipt,
                 ),
                 title: TextResponsive(
                   'Orders',
-                  style: TextStyle(
-                    fontFamily: 'SofiaPro-Medium',
-                    fontSize: 35,
-                    color: const Color(0xFF707070),
-                  ),
+                  style: optionStyle,
                   textAlign: TextAlign.left,
                 ),
               ),
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.account_box,
-                  color: const Color(0xFF707070),
                 ),
                 title: TextResponsive(
                   'Profiles',
-                  style: TextStyle(
-                    fontFamily: 'SofiaPro-Medium',
-                    fontSize: 35,
-                    color: const Color(0xFF707070),
-                  ),
-                  textAlign: TextAlign.left,
+                  style: optionStyle,
                 ),
               ),
             ],
