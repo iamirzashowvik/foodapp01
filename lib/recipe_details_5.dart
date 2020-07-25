@@ -43,22 +43,20 @@ class _RecipeState extends State<Recipe> {
       child: SafeArea(
         child: Scaffold(
           appBar: AppBar(
-            elevation: 0,
             backgroundColor: Colors.white,
-            leading: Icon(
-              Icons.arrow_back,
-              color: Colors.black,
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back, color: Colors.black),
+              onPressed: () => Navigator.of(context).pop(),
             ),
-            title: Center(
-              child: TextResponsive(
-                'Recipe',
-                style: TextStyle(
-                  fontFamily: 'SofiaPro-SemiBold',
-                  fontSize: 50,
-                  color: Color(0xff130f10),
-                ),
+            title: TextResponsive(
+              "Recipe",
+              style: TextStyle(
+                fontFamily: 'SofiaPro-SemiBold',
+                fontSize: 50,
+                color: Color(0xff130f10),
               ),
             ),
+            centerTitle: true,
           ),
           body: SingleChildScrollView(
             scrollDirection: Axis.vertical,

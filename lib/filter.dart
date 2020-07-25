@@ -28,37 +28,27 @@ class _Filter_2State extends State<Filter_2> {
 
       child: SafeArea(
         child: Scaffold(
+          appBar: AppBar(
+            backgroundColor: Colors.white,
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back, color: Colors.black),
+              onPressed: () => Navigator.of(context).pop(),
+            ),
+            title: TextResponsive(
+              "Filter",
+              style: TextStyle(
+                fontFamily: 'SofiaPro-SemiBold',
+                fontSize: 50,
+                color: Color(0xff130f10),
+              ),
+            ),
+            centerTitle: true,
+          ),
           backgroundColor: Colors.white,
           body: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Container(
-                  height: 50,
-                  child: Row(
-                    children: <Widget>[
-                      SizedBox(
-                        width: 18,
-                      ),
-                      //Image.asset('Assets/filter/arrow.png'),
-                      Icon(Icons.arrow_back),
-                      SizedBox(
-                        width: 150,
-                      ),
-                      TextResponsive(
-                        'Filter',
-                        style: TextStyle(
-                          fontFamily: 'SofiaPro-SemiBold',
-                          fontSize: 50,
-                          color: Color(0xff130f10),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Divider(
-                  thickness: 2,
-                ),
                 Padding(
                   padding: EdgeInsets.all(18.0),
                   child: Column(

@@ -16,37 +16,27 @@ class Recipe_notes extends StatelessWidget {
       height: 1920, // Optional
       width: 1080, // Optional
       allowFontScaling: true,
-      child: Scaffold(
-        body: SafeArea(
-          child: Column(
+      child: SafeArea(
+        child: Scaffold(
+          appBar: AppBar(
+            backgroundColor: Colors.white,
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back, color: Colors.black),
+              onPressed: () => Navigator.of(context).pop(),
+            ),
+            title: TextResponsive(
+              "Recipe Notes",
+              style: TextStyle(
+                fontFamily: 'SofiaPro-SemiBold',
+                fontSize: 50,
+                color: Color(0xff130f10),
+              ),
+            ),
+            centerTitle: true,
+          ),
+          body: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Container(
-                height: 50,
-                child: Row(
-                  children: <Widget>[
-                    SizedBox(
-                      width: 18,
-                    ),
-                    //Image.asset('Assets/filter/arrow.png'),
-                    Icon(Icons.arrow_back),
-                    SizedBox(
-                      width: 100,
-                    ),
-                    TextResponsive(
-                      'Recipe notes',
-                      style: TextStyle(
-                        fontFamily: 'SofiaPro-SemiBold',
-                        fontSize: 50,
-                        color: Color(0xff130f10),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Divider(
-                thickness: 2,
-              ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                 child: Column(
