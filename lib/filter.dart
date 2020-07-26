@@ -9,6 +9,7 @@ class Filter_2 extends StatefulWidget {
 
 class _Filter_2State extends State<Filter_2> {
   int slidervalue = 6;
+  int x;
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +45,6 @@ class _Filter_2State extends State<Filter_2> {
             ),
             centerTitle: true,
           ),
-          backgroundColor: Colors.white,
           body: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -129,19 +129,23 @@ class _Filter_2State extends State<Filter_2> {
                       SizedBox(
                         height: 20,
                       ),
-                      Row(
-                        children: <Widget>[
-                          // Adobe XD layer: 'Rectangle 7 copy 11' (shape)
-                          Countbutton(1),
-                          Countbutton(2),
-                          Countbutton(3),
-                          Countbutton(4),
-                          Countbutton(5),
-                          Countbutton(6),
-                          Countbutton(7),
-                          Countbutton(8),
-                        ],
+                      Container(
+                        height: 50,
+                        width: 1000,
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: 10,
+                          itemBuilder: (BuildContext context, int index) {
+                            return GestureDetector(
+                              child: Countbutton(
+                                count: index + 1,
+                              ),
+                              onTap: () {},
+                            );
+                          },
+                        ),
                       ),
+
                       SizedBox(
                         height: 20,
                       ),
@@ -381,32 +385,47 @@ class _Diet_cardState extends State<Diet_card> {
   }
 }
 
-class Countbutton extends StatelessWidget {
-  Countbutton(this.count);
+class Countbutton extends StatefulWidget {
+  Countbutton({this.count, this.dc});
   final int count;
+  final Color dc;
+  int v;
+  @override
+  _CountbuttonState createState() => _CountbuttonState();
+}
+
+class _CountbuttonState extends State<Countbutton> {
+  bool isSelect = false;
+
+  Color _color = Color(0xFFFE718B);
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 100.0.h,
-      height: 100.0.h,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.elliptical(50.0, 50.0)),
-        color: const Color(0xffffffff),
-        boxShadow: [
-          BoxShadow(
-            color: const Color(0x0d130f10),
-            offset: Offset(4, 6.928203105926514),
-            blurRadius: 18,
-          ),
-        ],
-      ),
-      child: Center(
-        child: TextResponsive(
-          '$count',
-          style: TextStyle(
-            fontFamily: 'SofiaPro',
-            fontSize: 53,
-            color: Color(0xff282828),
+    return InkWell(
+      onTap: () {
+        setState(() {
+          if (widget.count == widget.count) {
+            isSelect = !isSelect;
+          } else {
+            isSelect = false;
+          }
+        });
+        print(isSelect);
+      },
+      child: Padding(
+        padding: EdgeInsets.all(5.0),
+        child: CircleAvatar(
+          radius: 25,
+          backgroundColor: (isSelect) ? _color : Color(0xffffffff),
+          child: Center(
+            child: TextResponsive(
+              '${widget.count}',
+              style: TextStyle(
+                fontFamily: 'SofiaPro',
+                fontSize: 53,
+                color: Color(0xff282828),
+              ),
+            ),
           ),
         ),
       ),
