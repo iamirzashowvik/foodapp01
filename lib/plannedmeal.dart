@@ -36,29 +36,28 @@ class _Plannedmeal1State extends State<Plannedmeal1> {
       allowFontScaling: true,
       child: SafeArea(
         child: Scaffold(
-          body: SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: Container(
-              child: Column(
-                children: <Widget>[
-                  Container(
-                    height: 50,
-                    child: Center(
-                      child: TextResponsive(
-                        'My planned meal',
-                        style: TextStyle(
-                          fontFamily: 'SofiaPro-SemiBold',
-                          fontSize: 50,
-                          color: Color(0xff130f10),
-                        ),
-                        textAlign: TextAlign.center,
+          body: Container(
+            child: Column(
+              children: <Widget>[
+                Container(
+                  height: 50,
+                  child: Center(
+                    child: TextResponsive(
+                      'My planned meal',
+                      style: TextStyle(
+                        fontFamily: 'SofiaPro-SemiBold',
+                        fontSize: 50,
+                        color: Color(0xff130f10),
                       ),
+                      textAlign: TextAlign.center,
                     ),
                   ),
-                  Divider(
-                    thickness: .5,
-                  ),
-                  Padding(
+                ),
+                Divider(
+                  thickness: .5,
+                ),
+                Expanded(
+                  child: Padding(
                     padding:
                         EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
                     child: Container(
@@ -89,8 +88,8 @@ class _Plannedmeal1State extends State<Plannedmeal1> {
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
           bottomNavigationBar: BottomNavigationBar(
