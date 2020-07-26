@@ -34,63 +34,59 @@ class _PlannedmealState extends State<Plannedmeal> {
       allowFontScaling: true,
       child: SafeArea(
         child: Scaffold(
-          body: SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: Container(
-              child: Column(
-                children: <Widget>[
-                  Container(
-                    height: 50,
-                    child: Center(
-                      child: TextResponsive(
-                        'My planned meal',
-                        style: TextStyle(
-                          fontFamily: 'SofiaPro-SemiBold',
-                          fontSize: 50,
-                          color: const Color(0xff130f10),
-                          height: 1.2,
-                        ),
-                        textAlign: TextAlign.center,
+          body: Container(
+            child: Column(
+              children: <Widget>[
+                Container(
+                  height: 50,
+                  child: Center(
+                    child: TextResponsive(
+                      'My planned meal',
+                      style: TextStyle(
+                        fontFamily: 'SofiaPro-SemiBold',
+                        fontSize: 50,
+                        color: const Color(0xff130f10),
+                        height: 1.2,
                       ),
+                      textAlign: TextAlign.center,
                     ),
                   ),
-                  Divider(
-                    thickness: .5,
-                  ),
-                  Padding(
+                ),
+                Divider(
+                  thickness: .5,
+                ),
+                Expanded(
+                  child: Padding(
                     padding:
                         EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-                    child: Container(
-                      height: 10000,
-                      width: 800.w,
-                      child: ListView.builder(
-                        scrollDirection: Axis.vertical,
-                        itemCount: 5,
-                        itemBuilder: (BuildContext context, int index) {
-                          return Container(
-                            color: Color(0xffffffff),
-                            height: 1000.h,
-                            width: 1000.w,
-                            child: Planned_mealv2_card(
-                              path:
-                                  'Assets/pmv2/1501791674-delish-chicken-curry-horizontal copy.png',
-                              name: 'Mexican rice with meat',
-                              star: 5,
-                              price: 35,
-                              steps: 5,
-                              intgrediants: 12,
-                              cost: 10,
-                              loScore: 23,
-                              hlthScore: 43,
-                              isRemove: true,
-                            ),
-                          );
-                        },
-                      ),
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      itemCount: 5,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Container(
+                          color: Color(0xffffffff),
+                          height: 1000.h,
+                          width: 1000.w,
+                          child: Planned_mealv2_card(
+                            path:
+                                'Assets/pmv2/1501791674-delish-chicken-curry-horizontal copy.png',
+                            name: 'Mexican rice with meat',
+                            star: 5,
+                            price: 35,
+                            steps: 5,
+                            intgrediants: 12,
+                            cost: 10,
+                            loScore: 23,
+                            hlthScore: 43,
+                            isRemove: true,
+                          ),
+                        );
+                      },
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
           bottomNavigationBar: BottomNavigationBar(
