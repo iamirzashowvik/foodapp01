@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:project01withsauiux/widgets/reusablecard.dart';
 import 'package:responsive_widgets/responsive_widgets.dart';
+import 'filter.dart';
+import 'main.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -32,9 +34,9 @@ class _HomeState extends State<Home> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Padding(
-                  padding: EdgeInsets.all(20.0),
+                  padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
                   child: Container(
-                    height: 50,
+                    height: 35,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
@@ -46,32 +48,33 @@ class _HomeState extends State<Home> {
                             color: const Color(0xff130f10),
                           ),
                         ),
-                        CircleAvatar(
-                            radius: 55.h,
-                            backgroundColor: Color(0x1aff718b),
-                            child: Image.asset(
-                              'Assets/home/filter.png.png',
-                              height: 38.h,
-                              width: 38.h,
-                            )),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pushNamed(context, 'filter');
+                          },
+                          child: CircleAvatar(
+                              radius: 55.h,
+                              backgroundColor: Color(0x1aff718b),
+                              child: Image.asset(
+                                'Assets/home/filter.png.png',
+                                height: 38.h,
+                                width: 38.h,
+                              )),
+                        ),
                       ],
                     ),
                   ),
                 ),
                 Divider(
-                  thickness: 2,
-                ),
-                SizedBox(
-                  height: 10,
+                  thickness: 0.5,
                 ),
                 Padding(
-                  padding: EdgeInsets.all(20.0),
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
                   child: Container(
-                    // width: 1005.0,
-                    // height: 130.0,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10.0),
-                      //   color: const Color(0xffffffff),
+                      color: const Color(0xffffffff),
                     ),
                     child: TextField(
                       decoration: InputDecoration(
@@ -82,22 +85,37 @@ class _HomeState extends State<Home> {
                   ),
                 ),
                 Container(
-                  height: 250.h,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 4,
-                    itemBuilder: (BuildContext context, int index) {
-                      return GestureDetector(
-                        child: HomeIcon(
-                          title: "sometitle",
-                          icon: 'Assets/home/healthy.png.png',
+                    height: 250.h,
+                    child: Row(
+                      children: <Widget>[
+                        GestureDetector(
+                          child: HomeIcon(
+                            title: "Healthy",
+                            icon: 'Assets/home/healthy.png.png',
+                          ),
                         ),
-                      );
-                    },
-                  ),
-                ),
+                        GestureDetector(
+                          child: HomeIcon(
+                            title: "Desserts",
+                            icon: 'Assets/home/Desserts.png.png',
+                          ),
+                        ),
+                        GestureDetector(
+                          child: HomeIcon(
+                            title: "Ingredients",
+                            icon: 'Assets/home/Ingredients.png.png',
+                          ),
+                        ),
+                        GestureDetector(
+                          child: HomeIcon(
+                            title: "Cusine",
+                            icon: 'Assets/home/Cusine.png.png',
+                          ),
+                        ),
+                      ],
+                    )),
                 Padding(
-                  padding: EdgeInsets.all(20.0),
+                  padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
                   child: TextResponsive(
                     'Max 15 min total time ',
                     style: TextStyle(
@@ -108,32 +126,84 @@ class _HomeState extends State<Home> {
                     textAlign: TextAlign.left,
                   ),
                 ),
-                Expanded(
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 5,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Container(
-                          height: 872.h,
-                          width: 673.w,
-                          child: Planned_mealv2_card(
-                            path:
-                                'Assets/pmv2/1501791674-delish-chicken-curry-horizontal copy.png',
-                            name: 'Mwxican rice with meat',
-                            star: 5,
-                            price: 35,
-                            steps: 5,
-                            intgrediants: 12,
-                            cost: 10,
-                            loScore: 23,
-                            hlthScore: 43,
-                            isRemove: false,
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+                  child: Container(
+                    width: 3000,
+                    height: 872.h,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: 5,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Padding(
+                          padding: EdgeInsets.all(5.0),
+                          child: Container(
+                            color: Color(0xffffffff),
+                            height: 872.h,
+                            width: 600.w,
+                            child: Planned_mealv2_card(
+                              path:
+                                  'Assets/pmv2/1501791674-delish-chicken-curry-horizontal copy.png',
+                              name: 'Mexican rice with meat',
+                              star: 5,
+                              price: 35,
+                              steps: 5,
+                              intgrediants: 12,
+                              cost: 10,
+                              loScore: 23,
+                              hlthScore: 43,
+                              isRemove: false,
+                            ),
                           ),
-                        ),
-                      );
-                    },
+                        );
+                      },
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+                  child: TextResponsive(
+                    'Max 5 Ingredients ',
+                    style: TextStyle(
+                      fontFamily: 'SofiaPro-SemiBold',
+                      fontSize: 50,
+                      color: const Color(0xff130f10),
+                    ),
+                    textAlign: TextAlign.left,
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+                  child: Container(
+                    width: 3000,
+                    height: 872.h,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: 5,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Padding(
+                          padding: EdgeInsets.all(5.0),
+                          child: Container(
+                            color: Color(0xffffffff),
+                            height: 872.h,
+                            width: 600.w,
+                            child: Planned_mealv2_card(
+                              path:
+                                  'Assets/pmv2/1501791674-delish-chicken-curry-horizontal copy.png',
+                              name: 'Mexican rice with meat',
+                              star: 5,
+                              price: 35,
+                              steps: 5,
+                              intgrediants: 12,
+                              cost: 10,
+                              loScore: 23,
+                              hlthScore: 43,
+                              isRemove: false,
+                            ),
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ),
               ],
@@ -141,6 +211,7 @@ class _HomeState extends State<Home> {
           ),
         ),
         bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
           selectedItemColor: Color(0xffff7118b),
           unselectedItemColor: Color(0xff707070),
           currentIndex: _selectedIndex,

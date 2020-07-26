@@ -40,14 +40,15 @@ class Planned_mealv2_card extends StatelessWidget {
             children: <Widget>[
               Image.asset(
                 path,
-                width: 1000.w,
+                height: 517.h,
+                width: 1000,
                 // height: 100,
               ),
               Positioned(
                 left: 0,
                 bottom: 0,
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -56,7 +57,7 @@ class Planned_mealv2_card extends StatelessWidget {
                           name,
                           style: TextStyle(
                             fontFamily: 'SofiaPro-SemiBold',
-                            fontSize: 50,
+                            fontSize: 40,
                             color: const Color(0xff130f10),
                           ),
                         ),
@@ -91,21 +92,22 @@ class Planned_mealv2_card extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(
-                      width: 100,
-                    ),
-                    TextResponsive(
-                      '\$$price',
-                      style: TextStyle(
-                        fontFamily: 'Gilroy-SemiBold',
-                        fontSize: 70,
-                        color: const Color(0xffff718b),
-                      ),
-                      textAlign: TextAlign.left,
-                    ),
                   ],
                 ),
               ),
+              Positioned(
+                right: 10,
+                bottom: 5,
+                child: TextResponsive(
+                  '\$$price',
+                  style: TextStyle(
+                    fontFamily: 'Gilroy-SemiBold',
+                    fontSize: 50,
+                    color: const Color(0xffff718b),
+                  ),
+                  textAlign: TextAlign.left,
+                ),
+              )
             ],
           ),
           SizedBox(
