@@ -10,7 +10,7 @@ class Filter_2 extends StatefulWidget {
 class _Filter_2State extends State<Filter_2> {
   int slidervalue = 6;
   int x;
-
+  int selected = 1;
   @override
   Widget build(BuildContext context) {
     ResponsiveWidgets.init(
@@ -21,6 +21,7 @@ class _Filter_2State extends State<Filter_2> {
     );
     Color bc = Colors.black;
     Color dc = Colors.white;
+
     Color ac = Color(0xFFFE718B);
     return ResponsiveWidgets.builder(
       height: 1920, // Optional
@@ -137,10 +138,30 @@ class _Filter_2State extends State<Filter_2> {
                           itemCount: 10,
                           itemBuilder: (BuildContext context, int index) {
                             return GestureDetector(
-                              child: Countbutton(
-                                count: index + 1,
+                              child: Padding(
+                                padding: EdgeInsets.all(5.0),
+                                child: CircleAvatar(
+                                  radius: 25,
+                                  backgroundColor: selected == (index + 1)
+                                      ? Color(0xFFFE718B)
+                                      : Color(0xffffffff),
+                                  child: Center(
+                                    child: TextResponsive(
+                                      '${index + 1}',
+                                      style: TextStyle(
+                                        fontFamily: 'SofiaPro',
+                                        fontSize: 53,
+                                        color: Color(0xff282828),
+                                      ),
+                                    ),
+                                  ),
+                                ),
                               ),
-                              onTap: () {},
+                              onTap: () {
+                                setState(() {
+                                  selected = (index + 1);
+                                });
+                              },
                             );
                           },
                         ),
