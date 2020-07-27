@@ -11,6 +11,7 @@ class _Filter_2State extends State<Filter_2> {
   int slidervalue = 6;
   int x;
   int selected = 1;
+  bool heath = false;
   @override
   Widget build(BuildContext context) {
     ResponsiveWidgets.init(
@@ -86,33 +87,40 @@ class _Filter_2State extends State<Filter_2> {
                         ),
                       ),
 
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          // Adobe XD layer: 'Ellipse 512' (shape)
-                          Container(
-                            width: 60.h,
-                            height: 60.0.h,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(
-                                  Radius.elliptical(30.0, 30.0)),
-                              border: Border.all(
-                                  width: 2.0, color: Color(0x33000000)),
+                      InkWell(
+                        onTap: () {
+                          setState(() {
+                            heath = !heath;
+                          });
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[
+                            Container(
+                              width: 60.h,
+                              height: 60.0.h,
+                              decoration: BoxDecoration(
+                                color: heath ? Color(0xFFFE718B) : Colors.white,
+                                borderRadius: BorderRadius.all(
+                                    Radius.elliptical(30.0, 30.0)),
+                                border: Border.all(
+                                    width: 2.0, color: Color(0x33000000)),
+                              ),
                             ),
-                          ),
-                          SizedBox(
-                            width: 20,
-                          ),
-                          TextResponsive(
-                            'Make me healthier',
-                            style: TextStyle(
-                              fontFamily: 'SofiaPro-Light',
-                              fontSize: 35,
-                              color: const Color(0xb3130f10),
+                            SizedBox(
+                              width: 20,
                             ),
-                            textAlign: TextAlign.left,
-                          ),
-                        ],
+                            TextResponsive(
+                              'Make me healthier',
+                              style: TextStyle(
+                                fontFamily: 'SofiaPro-Light',
+                                fontSize: 35,
+                                color: const Color(0xb3130f10),
+                              ),
+                              textAlign: TextAlign.left,
+                            ),
+                          ],
+                        ),
                       ),
                       SizedBox(
                         height: 20,
