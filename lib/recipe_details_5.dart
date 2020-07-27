@@ -159,6 +159,8 @@ class _RecipeState extends State<Recipe> with SingleTickerProviderStateMixin {
                       // The number of tabs / content sections to display.
                       length: 2,
                       child: TabBar(
+                        labelColor: selectedColor1,
+                        unselectedLabelColor: selectedColor2,
                         controller: _tabController,
                         tabs: [
                           Tab(
@@ -177,7 +179,6 @@ class _RecipeState extends State<Recipe> with SingleTickerProviderStateMixin {
                                   style: TextStyle(
                                     fontFamily: 'SofiaPro-SemiBold',
                                     fontSize: 50,
-                                    color: selectedColor1,
                                   ),
                                 ),
                               ),
@@ -193,7 +194,6 @@ class _RecipeState extends State<Recipe> with SingleTickerProviderStateMixin {
                                   style: TextStyle(
                                     fontFamily: 'SofiaPro-SemiBold',
                                     fontSize: 50,
-                                    color: selectedColor2,
                                   ),
                                 ),
                               ),
