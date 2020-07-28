@@ -1,4 +1,4 @@
-# project01
+Food Application
 
 A new Flutter application.
 
