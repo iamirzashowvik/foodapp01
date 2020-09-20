@@ -38,7 +38,7 @@ class Planned_mealv2_card extends StatelessWidget {
         children: <Widget>[
           Stack(
             children: <Widget>[
-              Image.asset(
+              Image.network(
                 path,
                 height: 517.h,
                 width: 1000,

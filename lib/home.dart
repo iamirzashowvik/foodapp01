@@ -1,8 +1,13 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:project01withsauiux/widgets/reusablecard.dart';
 import 'package:responsive_widgets/responsive_widgets.dart';
 import 'filter.dart';
 import 'main.dart';
+import 'package:dio/dio.dart';
+import 'api_response/max5min.dart';
+import 'api_response/max_15_min.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -15,6 +20,27 @@ class _HomeState extends State<Home> {
     setState(() {
       _selectedIndex = index;
     });
+  }
+
+  Max5Min _max5min;
+  Max15MinRecipe _max15minRecipe;
+  // ignore: non_constant_identifier_names
+  void getData() async {
+    Dio dio = Dio();
+    Response r5 = await dio.get(
+        "https://pantryrecipe.herokuapp.com/api/v1/recipes/five_minutes_recipes.json");
+    Response r15 = await dio.get(
+        "https://pantryrecipe.herokuapp.com/api/v1/recipes/max_15_min_recipe.json");
+    setState(() {
+      _max5min = max5MinFromJson(r5.toString());
+      _max15minRecipe = max15MinRecipeFromJson(r15.toString());
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getData();
   }
 
   static const TextStyle optionStyle = TextStyle(
@@ -126,40 +152,43 @@ class _HomeState extends State<Home> {
                     textAlign: TextAlign.left,
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-                  child: Container(
-                    width: 3000,
-                    height: 872.h,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: 5,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Padding(
-                          padding: EdgeInsets.all(5.0),
-                          child: Container(
-                            color: Color(0xffffffff),
-                            height: 872.h,
-                            width: 600.w,
-                            child: Planned_mealv2_card(
-                              path:
-                                  'Assets/pmv2/1501791674-delish-chicken-curry-horizontal copy.png',
-                              name: 'Mexican rice with meat',
-                              star: 5,
-                              price: 35,
-                              steps: 5,
-                              intgrediants: 12,
-                              cost: 10,
-                              loScore: 23,
-                              hlthScore: 43,
-                              isRemove: false,
-                            ),
+                _max15minRecipe == null
+                    ? Center(child: CircularProgressIndicator())
+                    : Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 20.0, vertical: 10),
+                        child: Container(
+                          width: 3000,
+                          height: 872.h,
+                          child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: _max15minRecipe.recipe.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              var gg = _max15minRecipe.recipe[index];
+                              return Padding(
+                                padding: EdgeInsets.all(5.0),
+                                child: Container(
+                                  color: Color(0xffffffff),
+                                  height: 872.h,
+                                  width: 600.w,
+                                  child: Planned_mealv2_card(
+                                    path: gg.image,
+                                    name: gg.title,
+                                    star: gg.stars,
+                                    price: gg.pricePerServing,
+                                    steps: gg.steps,
+                                    intgrediants: gg.ingredients,
+                                    cost: gg.cost,
+                                    loScore: gg.leftoverScore,
+                                    hlthScore: gg.healthScore.toInt(),
+                                    isRemove: false,
+                                  ),
+                                ),
+                              );
+                            },
                           ),
-                        );
-                      },
-                    ),
-                  ),
-                ),
+                        ),
+                      ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
                   child: TextResponsive(
@@ -172,40 +201,43 @@ class _HomeState extends State<Home> {
                     textAlign: TextAlign.left,
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-                  child: Container(
-                    width: 3000,
-                    height: 872.h,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: 5,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Padding(
-                          padding: EdgeInsets.all(5.0),
-                          child: Container(
-                            color: Color(0xffffffff),
-                            height: 872.h,
-                            width: 600.w,
-                            child: Planned_mealv2_card(
-                              path:
-                                  'Assets/pmv2/1501791674-delish-chicken-curry-horizontal copy.png',
-                              name: 'Mexican rice with meat',
-                              star: 5,
-                              price: 35,
-                              steps: 5,
-                              intgrediants: 12,
-                              cost: 10,
-                              loScore: 23,
-                              hlthScore: 43,
-                              isRemove: false,
-                            ),
+                _max5min == null
+                    ? Center(child: CircularProgressIndicator())
+                    : Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 20.0, vertical: 10),
+                        child: Container(
+                          width: 3000,
+                          height: 872.h,
+                          child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: _max5min.recipe.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              var gg = _max5min.recipe[index];
+                              return Padding(
+                                padding: EdgeInsets.all(5.0),
+                                child: Container(
+                                  color: Color(0xffffffff),
+                                  height: 872.h,
+                                  width: 600.w,
+                                  child: Planned_mealv2_card(
+                                    path: gg.image,
+                                    name: gg.title,
+                                    star: gg.stars,
+                                    price: gg.pricePerServing,
+                                    steps: gg.steps,
+                                    intgrediants: gg.ingredients,
+                                    cost: gg.cost,
+                                    loScore: gg.leftoverScore,
+                                    hlthScore: gg.healthScore.toInt(),
+                                    isRemove: false,
+                                  ),
+                                ),
+                              );
+                            },
                           ),
-                        );
-                      },
-                    ),
-                  ),
-                ),
+                        ),
+                      ),
               ],
             ),
           ),

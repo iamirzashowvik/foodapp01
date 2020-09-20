@@ -22,6 +22,14 @@ class Control extends StatelessWidget {
                 padding: EdgeInsets.all(10),
                 color: Colors.amber,
                 onPressed: () {
+                  Navigator.pushNamed(context, 'signin');
+                },
+                child: Text('signin'),
+              ),
+              FlatButton(
+                padding: EdgeInsets.all(10),
+                color: Colors.amber,
+                onPressed: () {
                   Navigator.pushNamed(context, 'home');
                 },
                 child: Text('home'),

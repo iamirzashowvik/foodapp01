@@ -8,6 +8,7 @@ import 'control.dart';
 import 'filter.dart';
 import 'home.dart';
 import 'recipe_notes.dart';
+import 'sign_in.dart';
 
 void main() {
   runApp(MaterialApp(home: MyApp()));
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(initialRoute: 'control', routes: {
       'control': (context) => Control(),
       'signup': (context) => SignUp(),
+      'signin': (context) => SignIn(),
       'home': (context) => Home(),
       'filter': (context) => Filter_2(),
       'plannedmealv2': (context) => Plannedmeal(),

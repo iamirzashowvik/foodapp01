@@ -1,6 +1,8 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_widgets/responsive_widgets.dart';
+import 'api_response/recipe_v1.dart';
 
 class Plannedmeal1 extends StatefulWidget {
   static const TextStyle optionStyle = TextStyle(
@@ -20,6 +22,23 @@ class _Plannedmeal1State extends State<Plannedmeal1> {
     setState(() {
       _selectedIndex = index;
     });
+  }
+
+  RecipeV1 _recipeV1;
+  void getData() async {
+    Dio dio = Dio();
+    Response r =
+        await dio.get('https://pantryrecipe.herokuapp.com/api/v1/recipes.json');
+    print(r.data);
+    setState(() {
+      _recipeV1 = recipeV1FromJson(r.toString());
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getData();
   }
 
   @override
@@ -56,39 +75,49 @@ class _Plannedmeal1State extends State<Plannedmeal1> {
                 Divider(
                   thickness: .5,
                 ),
-                Expanded(
-                  child: Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-                    child: Container(
-                      height: 10000,
-                      width: 1000.w,
-                      child: ListView.builder(
-                        scrollDirection: Axis.vertical,
-                        itemCount: 5,
-                        itemBuilder: (BuildContext context, int index) {
-                          return Container(
-                            color: Color(0xffffffff),
-                            height: 1000.h,
+                _recipeV1 == null
+                    ? Center(
+                        child: CircularProgressIndicator(),
+                      )
+                    : Expanded(
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 20.0, vertical: 10),
+                          child: Container(
+                            height: 10000,
                             width: 1000.w,
-                            child: Planned_mealv1_card(
-                              path:
-                                  'Assets/pmv2/1501791674-delish-chicken-curry-horizontal copy.png',
-                              name: 'Mexican rice with meat',
-                              star: 5,
-                              price: 35,
-                              steps: 5,
-                              intgrediants: 12,
-                              cost: 10,
-                              loScore: 23,
-                              hlthScore: 43,
+                            child: ListView.builder(
+                              scrollDirection: Axis.vertical,
+                              itemCount: _recipeV1.recipe.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                var gg = _recipeV1.recipe[index];
+                                return Container(
+                                  color: Color(0xffffffff),
+                                  height: 1000.h,
+                                  width: 1000.w,
+                                  child: Planned_mealv1_card(
+                                    path: gg.image == null
+                                        ? 'https://i0.wp.com/images-prod.healthline.com/hlcmsresource/images/AN_images/healthy-eating-ingredients-1296x728-header.jpg?w=1155&h=1528'
+                                        : gg.image,
+                                    name: gg.title,
+                                    star: 5,
+                                    price: gg.pricePerServing == null
+                                        ? 35.0
+                                        : gg.pricePerServing,
+                                    steps: 5,
+                                    intgrediants: 12,
+                                    cost: 10,
+                                    loScore: 23,
+                                    hlthScore: gg.healthScore == null
+                                        ? 25
+                                        : gg.healthScore,
+                                  ),
+                                );
+                              },
                             ),
-                          );
-                        },
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                ),
               ],
             ),
           ),
@@ -170,7 +199,7 @@ class Planned_mealv1_card extends StatelessWidget {
       children: <Widget>[
         Stack(
           children: <Widget>[
-            Image.asset(path),
+            Image.network(path),
             Positioned(
               top: 10,
               right: 10,
