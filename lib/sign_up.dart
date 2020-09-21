@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:project01withsauiux/home.dart';
 import 'package:project01withsauiux/sign_in.dart';
 import 'package:responsive_widgets/responsive_widgets.dart';
+import 'package:progress_dialog/progress_dialog.dart';
 
 class SignUp extends StatefulWidget {
   @override
@@ -18,6 +19,17 @@ class _SignUpState extends State<SignUp> {
   bool obs = true;
   @override
   Widget build(BuildContext context) {
+    final ProgressDialog pr = ProgressDialog(
+      context,
+      type: ProgressDialogType.Normal,
+      isDismissible: true,
+
+      /// your body here
+      customBody: LinearProgressIndicator(
+        valueColor: AlwaysStoppedAnimation<Color>(Colors.blueAccent),
+        backgroundColor: Colors.white,
+      ),
+    );
     ResponsiveWidgets.init(
       context,
       height: 1920, // Optional
@@ -144,6 +156,7 @@ class _SignUpState extends State<SignUp> {
                           EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                       child: GestureDetector(
                         onTap: () async {
+                          await pr.show();
                           FormData formData = new FormData.fromMap({
                             "email": name,
                             "password": pass,
@@ -158,7 +171,9 @@ class _SignUpState extends State<SignUp> {
                           var jsonResponse = json.decode(response.toString());
                           var status = jsonResponse['success'];
                           print(status);
+
                           if (status == true) {
+                            await pr.hide();
                             print('gg');
                             Navigator.push(
                               context,
