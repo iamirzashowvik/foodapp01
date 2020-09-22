@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
       'filter': (context) => Filter_2(),
       'plannedmealv2': (context) => Plannedmeal(),
       'recipe': (context) => Recipe(),
-      'Recipe_notes': (context) => Recipe_notes(),
+      // 'Recipe_notes': (context) => Recipe_notes(),
       'plannedmeal1': (context) => Plannedmeal1(),
     });
   }

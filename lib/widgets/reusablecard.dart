@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_widgets/responsive_widgets.dart';
 
@@ -38,76 +39,111 @@ class Planned_mealv2_card extends StatelessWidget {
         children: <Widget>[
           Stack(
             children: <Widget>[
-              Image.network(
-                path,
+//              Image.network(
+//                path,
+//                height: 517.h,
+//                width: 1000,
+//                // height: 100,
+//              ),
+
+              Container(
                 height: 517.h,
                 width: 1000,
-                // height: 100,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(10),
+                      topLeft: Radius.circular(10)),
+                  //.circular(10),
+                  image: DecorationImage(
+                      image: NetworkImage(path == null
+                          ? 'https://i0.wp.com/images-prod.healthline.com/hlcmsresource/images/AN_images/healthy-eating-ingredients-1296x728-header.jpg?w=1155&h=1528'
+                          : path),
+                      fit: BoxFit.cover),
+                ),
               ),
               Positioned(
                 left: 0,
-                bottom: 0,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        TextResponsive(
-                          name,
-                          style: TextStyle(
-                            fontFamily: 'SofiaPro-SemiBold',
-                            fontSize: 40,
-                            color: const Color(0xff130f10),
+                bottom: -1,
+                child: Container(
+                  color: Colors.white,
+                  width: 601.w,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Padding(
+                            padding: EdgeInsets.only(top: 5),
+                            child: TextResponsive(
+                              name.substring(0, 10),
+                              style: TextStyle(
+                                fontFamily: 'SofiaPro-SemiBold',
+                                fontSize: 40,
+                                color: const Color(0xff130f10),
+                              ),
+                            ),
                           ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(vertical: 5),
+                            child: Row(
+                              children: <Widget>[
+                                Image.asset(
+                                  'Assets/pmv2/star copy -9.png',
+                                  height: 31.h,
+                                  width: 33.h,
+                                ),
+                                Image.asset(
+                                  'Assets/pmv2/star copy -9.png',
+                                  height: 31.h,
+                                  width: 33.h,
+                                ),
+                                Image.asset(
+                                  'Assets/pmv2/star copy -9.png',
+                                  height: 31.h,
+                                  width: 33.h,
+                                ),
+                                Image.asset(
+                                  'Assets/pmv2/star copy -9.png',
+                                  height: 31.h,
+                                  width: 33.h,
+                                ),
+                                Image.asset(
+                                  'Assets/pmv2/star copy -9.png',
+                                  height: 31.h,
+                                  width: 33.h,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      TextResponsive(
+                        '\$$price',
+                        style: TextStyle(
+                          fontFamily: 'Gilroy-SemiBold',
+                          fontSize: 50,
+                          color: const Color(0xffff718b),
                         ),
-                        Row(
-                          children: <Widget>[
-                            Image.asset(
-                              'Assets/pmv2/star copy -9.png',
-                              height: 31.h,
-                              width: 33.h,
-                            ),
-                            Image.asset(
-                              'Assets/pmv2/star copy -9.png',
-                              height: 31.h,
-                              width: 33.h,
-                            ),
-                            Image.asset(
-                              'Assets/pmv2/star copy -9.png',
-                              height: 31.h,
-                              width: 33.h,
-                            ),
-                            Image.asset(
-                              'Assets/pmv2/star copy -9.png',
-                              height: 31.h,
-                              width: 33.h,
-                            ),
-                            Image.asset(
-                              'Assets/pmv2/star copy -9.png',
-                              height: 31.h,
-                              width: 33.h,
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ],
+                        textAlign: TextAlign.left,
+                      )
+                    ],
+                  ),
                 ),
               ),
-              Positioned(
-                right: 10,
-                bottom: 5,
-                child: TextResponsive(
-                  '\$$price',
-                  style: TextStyle(
-                    fontFamily: 'Gilroy-SemiBold',
-                    fontSize: 50,
-                    color: const Color(0xffff718b),
-                  ),
-                  textAlign: TextAlign.left,
-                ),
-              )
+//              Positioned(
+//                right: 10,
+//                bottom: 5,
+//                child: TextResponsive(
+//                  '\$$price',
+//                  style: TextStyle(
+//                    fontFamily: 'Gilroy-SemiBold',
+//                    fontSize: 50,
+//                    color: const Color(0xffff718b),
+//                  ),
+//                  textAlign: TextAlign.left,
+//                ),
+//              )
             ],
           ),
           SizedBox(
@@ -280,3 +316,15 @@ class Planned_mealv2_card extends StatelessWidget {
     );
   }
 }
+
+//
+// Container(
+//   decoration: BoxDecoration(
+//     image: DecorationImage(
+//         image: NetworkImage(gg.image ==
+//                 null
+//             ? 'https://i0.wp.com/images-prod.healthline.com/hlcmsresource/images/AN_images/healthy-eating-ingredients-1296x728-header.jpg?w=1155&h=1528'
+//             : gg.image),
+//         fit: BoxFit.cover),
+//   ),
+// ),

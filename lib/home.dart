@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'recipe_notes.dart';
 import 'package:flutter/material.dart';
 import 'package:project01withsauiux/widgets/reusablecard.dart';
 import 'package:responsive_widgets/responsive_widgets.dart';
@@ -158,6 +158,10 @@ class _HomeState extends State<Home> {
                         padding: EdgeInsets.symmetric(
                             horizontal: 20.0, vertical: 10),
                         child: Container(
+                          decoration: BoxDecoration(
+                            //          color: Colors.red,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
                           width: 3000,
                           height: 872.h,
                           child: ListView.builder(
@@ -165,23 +169,40 @@ class _HomeState extends State<Home> {
                             itemCount: _max15minRecipe.recipe.length,
                             itemBuilder: (BuildContext context, int index) {
                               var gg = _max15minRecipe.recipe[index];
-                              return Padding(
-                                padding: EdgeInsets.all(5.0),
-                                child: Container(
-                                  color: Color(0xffffffff),
-                                  height: 872.h,
-                                  width: 600.w,
-                                  child: Planned_mealv2_card(
-                                    path: gg.image,
-                                    name: gg.title,
-                                    star: gg.stars,
-                                    price: gg.pricePerServing,
-                                    steps: gg.steps,
-                                    intgrediants: gg.ingredients,
-                                    cost: gg.cost,
-                                    loScore: gg.leftoverScore,
-                                    hlthScore: gg.healthScore.toInt(),
-                                    isRemove: false,
+                              return GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              Recipe_notes(gg.id)
+                                          //  Question(
+
+                                          // )
+
+                                          ));
+                                },
+                                child: Padding(
+                                  padding: EdgeInsets.all(5.0),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      color: Color(0xffffffff),
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    height: 872.h,
+                                    width: 600.w,
+                                    child: Planned_mealv2_card(
+                                      path: gg.image,
+                                      name: gg.title,
+                                      star: gg.stars,
+                                      price: gg.pricePerServing,
+                                      steps: gg.steps,
+                                      intgrediants: gg.ingredients,
+                                      cost: gg.cost,
+                                      loScore: gg.leftoverScore,
+                                      hlthScore: gg.healthScore.toInt(),
+                                      isRemove: false,
+                                    ),
                                   ),
                                 ),
                               );
@@ -214,23 +235,37 @@ class _HomeState extends State<Home> {
                             itemCount: _max5min.recipe.length,
                             itemBuilder: (BuildContext context, int index) {
                               var gg = _max5min.recipe[index];
-                              return Padding(
-                                padding: EdgeInsets.all(5.0),
-                                child: Container(
-                                  color: Color(0xffffffff),
-                                  height: 872.h,
-                                  width: 600.w,
-                                  child: Planned_mealv2_card(
-                                    path: gg.image,
-                                    name: gg.title,
-                                    star: gg.stars,
-                                    price: gg.pricePerServing,
-                                    steps: gg.steps,
-                                    intgrediants: gg.ingredients,
-                                    cost: gg.cost,
-                                    loScore: gg.leftoverScore,
-                                    hlthScore: gg.healthScore.toInt(),
-                                    isRemove: false,
+                              return GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              Recipe_notes(gg.id)
+                                          //  Question(
+
+                                          // )
+
+                                          ));
+                                },
+                                child: Padding(
+                                  padding: EdgeInsets.all(5.0),
+                                  child: Container(
+                                    color: Color(0xffffffff),
+                                    height: 872.h,
+                                    width: 600.w,
+                                    child: Planned_mealv2_card(
+                                      path: gg.image,
+                                      name: gg.title,
+                                      star: gg.stars,
+                                      price: gg.pricePerServing,
+                                      steps: gg.steps,
+                                      intgrediants: gg.ingredients,
+                                      cost: gg.cost,
+                                      loScore: gg.leftoverScore,
+                                      hlthScore: gg.healthScore.toInt(),
+                                      isRemove: false,
+                                    ),
                                   ),
                                 ),
                               );

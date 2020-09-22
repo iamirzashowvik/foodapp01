@@ -5,7 +5,10 @@ import 'package:flutter/painting.dart';
 import 'package:responsive_widgets/responsive_widgets.dart';
 import 'api_response/recipe_notes.dart';
 
+// ignore: camel_case_types
 class Recipe_notes extends StatefulWidget {
+  final int id;
+  Recipe_notes(this.id);
   @override
   _Recipe_notesState createState() => _Recipe_notesState();
 }
@@ -14,8 +17,8 @@ class _Recipe_notesState extends State<Recipe_notes> {
   Recipes1 _recipes1;
   void getData() async {
     Dio dio = Dio();
-    Response response = await dio
-        .get('https://pantryrecipe.herokuapp.com/api/v1/recipes/1.json');
+    Response response = await dio.get(
+        'https://pantryrecipe.herokuapp.com/api/v1/recipes/${widget.id}.json');
     print(response.data);
     setState(() {
       _recipes1 = recipes1FromJson(response.toString());
@@ -79,8 +82,11 @@ class _Recipe_notesState extends State<Recipe_notes> {
                                 Container(
                                   decoration: BoxDecoration(
                                     image: DecorationImage(
-                                        image: NetworkImage(
-                                            _recipes1.recipe.image),
+                                        image: NetworkImage(_recipes1
+                                                    .recipe.image ==
+                                                null
+                                            ? 'https://i0.wp.com/images-prod.healthline.com/hlcmsresource/images/AN_images/healthy-eating-ingredients-1296x728-header.jpg?w=1155&h=1528'
+                                            : _recipes1.recipe.image),
                                         fit: BoxFit.cover),
                                   ),
                                 ),
@@ -138,7 +144,7 @@ class _Recipe_notesState extends State<Recipe_notes> {
                               Column(
                                 children: <Widget>[
                                   TextResponsive(
-                                    _recipes1.recipe.title.substring(40),
+                                    _recipes1.recipe.title.substring(0, 10),
                                     style: TextStyle(
                                       fontFamily: 'SofiaPro-SemiBold',
                                       fontSize: 70,
@@ -166,7 +172,12 @@ class _Recipe_notesState extends State<Recipe_notes> {
                               Row(
                                 children: <Widget>[
                                   TextResponsive(
-                                    _recipes1.recipe.readyInMinutes.toString(),
+                                    _recipes1.recipe.readyInMinutes
+                                                .toString() ==
+                                            null
+                                        ? '20'
+                                        : _recipes1.recipe.readyInMinutes
+                                            .toString(),
                                     style: TextStyle(
                                       fontFamily: 'SofiaPro-SemiBold',
                                       fontSize: 80,
@@ -249,7 +260,7 @@ class _Recipe_notesState extends State<Recipe_notes> {
                                 ),
                                 child: Center(
                                   child: TextResponsive(
-                                    '23% leftover score',
+                                    '${_recipes1.recipe.leftoverScore.toString()}% leftover score',
                                     style: TextStyle(
                                       fontFamily: 'SofiaPro-Medium',
                                       fontSize: 40,

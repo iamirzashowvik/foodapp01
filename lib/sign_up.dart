@@ -14,6 +14,33 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  showAlertDialog(BuildContext context) {
+    // Create button
+    Widget okButton = FlatButton(
+      child: Text("OK"),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+    );
+
+    // Create AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text('Try Again'),
+      content: Text("Something Went Wrong"),
+      actions: [
+        okButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
   String pass;
   String name;
   bool obs = true;
@@ -25,7 +52,7 @@ class _SignUpState extends State<SignUp> {
       isDismissible: true,
 
       /// your body here
-      customBody: LinearProgressIndicator(
+      customBody: CircularProgressIndicator(
         valueColor: AlwaysStoppedAnimation<Color>(Colors.blueAccent),
         backgroundColor: Colors.white,
       ),
@@ -170,7 +197,7 @@ class _SignUpState extends State<SignUp> {
                           print(response.data);
                           var jsonResponse = json.decode(response.toString());
                           var status = jsonResponse['success'];
-                          print(status);
+                          print('yyyyyyy $status');
 
                           if (status == true) {
                             await pr.hide();
@@ -180,11 +207,13 @@ class _SignUpState extends State<SignUp> {
                               MaterialPageRoute(builder: (context) => Home()),
                             );
                           } else {
+                            await pr.hide();
                             print('gfg');
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => SignUp()),
-                            );
+                            showAlertDialog(context);
+//                            Navigator.push(
+//                              context,
+//                              MaterialPageRoute(builder: (context) => SignUp()),
+//                            );
                           }
                         },
                         child: Container(
